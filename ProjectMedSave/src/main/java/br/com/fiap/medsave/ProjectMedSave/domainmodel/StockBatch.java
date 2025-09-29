@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,7 @@ public class StockBatch {
     private Long currentQuantity; // Numeric(8) - usando Long para garantir capacidade
 
     @Column(name = "UNITARY_COST", precision = 10, scale = 2)
-    private Float unitaryCost; // Float (10)
+    private BigDecimal unitaryCost; // Float (10)
 
     @Column(name = "LOCATION_MEDICINE", length = 100)
     private String locationMedicine; // Varchar(100)

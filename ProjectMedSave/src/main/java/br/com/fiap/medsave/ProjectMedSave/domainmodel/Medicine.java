@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
@@ -48,7 +49,7 @@ public class Medicine {
     private Integer minimalStock; // Numeric(4)
 
     @Column(name = "AVERAGE_COST")
-    private Float averageCost; // Float (10)
+    private BigDecimal averageCost; // Float (10)
 
     @Column(name = "STATUS", length = 20)
     private String status; // Varchar(20)
