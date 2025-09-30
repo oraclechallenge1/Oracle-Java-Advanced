@@ -1,8 +1,11 @@
+## Diagrama de classes
 ```mermaid
 
 ---
 config:
   theme: neutral
+  layout: elk
+  look: classic
 ---
 classDiagram
 direction LR
@@ -60,3 +63,12 @@ direction LR
     StockBatch "1" --|> "n" Dispensation
     UserSys "1" --|> "n" Dispensation
 
+	class Medicine:::Sky
+	class StockBatch:::Sky
+	class Dispensation:::Sky
+	class UserSys:::Sky
+
+	classDef Pine :,stroke-width:1px, stroke-dasharray:none, stroke:#254336, fill:#27654A, color:#FFFFFF
+	classDef Sky :,stroke-width:1px, stroke-dasharray:none, stroke:#374D7C, fill:#E2EBFF, color:#374D7C
+
+```
