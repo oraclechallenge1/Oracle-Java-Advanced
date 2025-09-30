@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "STOCK_BATCH")
@@ -22,38 +21,38 @@ public class StockBatch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Assumindo que a PK é autoincrementável
     @Column(name = "BATCH_ID")
-    private Long batchId; // Numeric
+    private @Getter @Setter Long batchId; // Numeric
 
     // Chave Estrangeira (FK) - Relacionamento com MEDICINES
     // Mapeamento Many-to-One
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEDICINE_ID", nullable = false) // A coluna real da FK no BD
-    private Medicine medicine;
+    private @Getter @Setter Medicine medicine;
 
     // Atributos da Entidade
     @Column(name = "NUMBER_BATCH", length = 255)
-    private String numberBatch; // Varchar(255)
+    private @Getter @Setter String numberBatch; // Varchar(255)
 
     @Column(name = "DATE_ENTRY")
-    private LocalDate dateEntry; // Date
+    private @Getter @Setter LocalDate dateEntry; // Date
 
     @Column(name = "DATE_VALIDITY")
-    private LocalDate dateValidity; // Date
+    private @Getter @Setter LocalDate dateValidity; // Date
 
     @Column(name = "CURRENT_QUANTITY")
-    private Long currentQuantity; // Numeric(8) - usando Long para garantir capacidade
+    private @Getter @Setter Long currentQuantity; // Numeric(8) - usando Long para garantir capacidade
 
     @Column(name = "UNITARY_COST", precision = 10, scale = 2)
-    private BigDecimal unitaryCost; // Float (10)
+    private @Getter @Setter BigDecimal unitaryCost; // Float (10)
 
     @Column(name = "LOCATION_MEDICINE", length = 100)
-    private String locationMedicine; // Varchar(100)
+    private @Getter @Setter String locationMedicine; // Varchar(100)
 
     @Column(name = "SUPPLIER", length = 150)
-    private String supplier; // Varchar(150)
+    private @Getter @Setter String supplier; // Varchar(150)
 
     @Column(name = "STATUS", length = 20)
-    private String status; // Varchar(20)
+    private @Getter @Setter String status; // Varchar(20)
 
     // Relacionamento (Um Lote pode ter Múltiplas Dispensaçõees)
     // Mapeamento One-to-Many com DISPENSATION
