@@ -66,9 +66,6 @@ public class MedicineServiceImpl implements MedicineService {
         if (!medicideFromDatabase.getMinimalStock().equals(medicine.getMinimalStock())) {
             medicideFromDatabase.setMinimalStock(medicine.getMinimalStock());
         }
-        if (!medicideFromDatabase.getAverageCost().equals(medicine.getAverageCost())) {
-            medicideFromDatabase.setAverageCost(medicine.getAverageCost());
-        }
         if (!medicideFromDatabase.getStatus().equals(medicine.getStatus())) {
             medicideFromDatabase.setStatus(medicine.getStatus());
         }

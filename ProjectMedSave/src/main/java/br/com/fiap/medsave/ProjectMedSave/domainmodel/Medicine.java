@@ -48,9 +48,6 @@ public class Medicine {
     @Column(name = "MINIMAL_STOCK")
     private Integer minimalStock; // Numeric(4)
 
-    @Column(name = "AVERAGE_COST")
-    private BigDecimal averageCost; // Float (10)
-
     @Column(name = "STATUS", length = 20)
     private String status; // Varchar(20)
 
@@ -84,7 +81,6 @@ public class Medicine {
                 ", anvisaRecord='" + anvisaRecord + '\'' +
                 ", categoryMedicine='" + categoryMedicine + '\'' +
                 ", minimalStock=" + minimalStock +
-                ", averageCost=" + averageCost +
                 ", status='" + status + '\'' +
                 ", stockBatches=" + stockBatches +
                 '}';
