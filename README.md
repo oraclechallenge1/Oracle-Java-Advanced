@@ -1,4 +1,4 @@
-![Diagrama DER MedSave](images/der.jpg)
+![Diagrama DER MedSave](images/raw.png)
 
 # 🩺 MedSave: Controle Inteligente, Saúde Eficiente.
 
