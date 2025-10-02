@@ -1,4 +1,4 @@
-![Diagrama DER MedSave](images/raw.png)
+![Diagrama DER MedSave](images/logo.png)
 
 # 🩺 MedSave: Controle Inteligente, Saúde Eficiente.
 
@@ -62,9 +62,9 @@ O diagrama abaixo representa as principais entidades e seus relacionamentos no e
 
 ---
 config:
-  theme: neutral
+  theme: neo-dark
   layout: elk
-  look: classic
+  look: neo
 ---
 classDiagram
 direction LR
@@ -112,29 +112,30 @@ direction LR
 	    -String email
 	    -String phoneNumber
     }
-
 	<<Class>> Medicine
 	<<Class>> StockBatch
 	<<Class>> Dispensation
 	<<Class>> UserSys
-
     Medicine "1" --|> "n" StockBatch
     StockBatch "1" --|> "n" Dispensation
     UserSys "1" --|> "n" Dispensation
-
+	style Medicine :,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C
+	style StockBatch :,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C
+	style Dispensation :,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C
+	style UserSys :,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C
 	class Medicine:::Sky
 	class StockBatch:::Sky
 	class Dispensation:::Sky
 	class UserSys:::Sky
-
-	classDef Pine :,stroke-width:1px, stroke-dasharray:none, stroke:#254336, fill:#27654A, color:#FFFFFF
-	classDef Sky :,stroke-width:1px, stroke-dasharray:none, stroke:#374D7C, fill:#E2EBFF, color:#374D7C
-
 ```
+
+---
 
 ### 🗃️ Diagrama de Entidade-Relacionamento (DER)
 
-![Diagrama DER MedSave](images/der.jpg)
+<div align="center">
+  <img src="images/der.jpg" alt="Cronograma do Projeto MedSave" style="max-width: 90%; border: 1px solid #ddd; border-radius: 4px;">
+</div>
 
 ---
 
@@ -142,6 +143,31 @@ direction LR
 
 Os microserviços de backend são acessados através da nossa API REST. Abaixo está o mapeamento dos principais *endpoints*.
 
-### `mapeamento dos endpoints`
 
-*Insira aqui a documentação da API (endpoints, métodos HTTP e descrições).*
+## Documentação da API
+
+#### Retorna todos os itens
+
+```http
+  GET /api/items
+```
+
+| Parâmetro   | Tipo       | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `api_key` | `string` | **Obrigatório**. A chave da sua API |
+
+#### Retorna um item
+
+```http
+  GET /api/items/${id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `id`      | `string` | **Obrigatório**. O ID do item que você quer |
+
+#### add(num1, num2)
+
+Recebe dois números e retorna a sua soma.
+
+
