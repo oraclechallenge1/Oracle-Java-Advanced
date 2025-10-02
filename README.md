@@ -1,3 +1,5 @@
+![Diagrama DER MedSave](images/der.jpg)
+
 # 🩺 MedSave: Controle Inteligente, Saúde Eficiente.
 
 > **Prevenção de perdas e otimização de compras em tempo real. A inteligência que a sua gestão de estoque hospitalar precisa.**
@@ -132,9 +134,7 @@ direction LR
 
 ### 🗃️ Diagrama de Entidade-Relacionamento (DER)
 
-### `fotoDer`
-
-![Diagrama DER MedSave](caminho/para/sua/imagem/der.png)
+![Diagrama DER MedSave](images/der.jpg)
 
 ---
 
