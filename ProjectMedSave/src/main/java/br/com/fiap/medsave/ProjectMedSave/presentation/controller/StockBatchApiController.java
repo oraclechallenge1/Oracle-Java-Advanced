@@ -3,6 +3,8 @@ package br.com.fiap.medsave.ProjectMedSave.presentation.controller;
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.StockBatch;
 import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.StockBatchDTO;
 import br.com.fiap.medsave.ProjectMedSave.service.StockBatchService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +18,12 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/stockbatches")
 @RequiredArgsConstructor
+@Tag(name = "StockBatch", description = "Stock Batch operations")
 public class StockBatchApiController {
 
     private final StockBatchService stockBatchService;
 
+    @Operation(summary = "Insert stock batch", method = "POST")
     @PostMapping
     public ResponseEntity<StockBatchDTO> create(@Valid @RequestBody StockBatchDTO batchDTO) {
         StockBatch batchToCreate = StockBatchDTO.toEntity(batchDTO);
@@ -29,6 +33,7 @@ public class StockBatchApiController {
                 .body(StockBatchDTO.fromEntity(createdBatch));
     }
 
+    @Operation(summary = "Return stock batch", method = "GET")
     @GetMapping
     public ResponseEntity<List<StockBatchDTO>> findAll() {
         List<StockBatch> batches = stockBatchService.findAll();
@@ -37,7 +42,7 @@ public class StockBatchApiController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(batchDTOS);
     }
-
+    @Operation(summary = "Return stock batch by ID", method = "GET")
     @GetMapping("/{id}")
     public ResponseEntity<StockBatchDTO> findById(@PathVariable Long id) {
         StockBatch batch = stockBatchService.findById(id)
@@ -48,6 +53,7 @@ public class StockBatchApiController {
         return ResponseEntity.ok(StockBatchDTO.fromEntity(batch));
     }
 
+    @Operation(summary = "Partial Update stock batch byd ID", method = "PATCH")
     @PatchMapping("/{id}")
     public ResponseEntity<StockBatchDTO> partialUpdate(@PathVariable Long id,
                                                        @Valid @RequestBody StockBatchDTO batchDTO) {
@@ -60,6 +66,7 @@ public class StockBatchApiController {
         }
     }
 
+    @Operation(summary = "Delete stock batch by ID", method = "DELETE")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         if (!stockBatchService.existsById(id)) {
@@ -69,6 +76,7 @@ public class StockBatchApiController {
         return ResponseEntity.noContent().build();
     }
 
+    @Operation(summary = "Delete stock batch", method = "DELETE")
     @DeleteMapping
     public ResponseEntity<Void> delete(@Valid @RequestBody StockBatchDTO batchDTO) {
         StockBatch batchToDelete = StockBatchDTO.toEntity(batchDTO);
