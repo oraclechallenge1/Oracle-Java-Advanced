@@ -41,7 +41,7 @@ public class MedicineDispense {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MEDICINE_ID", nullable = false)
-    private @Getter @Setter Medicines medicine;
+    private @Getter @Setter Medicine medicine;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BATCH_ID", nullable = false)

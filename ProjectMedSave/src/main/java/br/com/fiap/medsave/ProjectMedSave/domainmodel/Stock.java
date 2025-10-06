@@ -23,7 +23,7 @@ public class Stock {
     // Chaves Estrangeiras N:1
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MEDICINE_ID", nullable = false)
-    private @Getter @Setter Medicines medicines;
+    private @Getter @Setter Medicine medicine;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BATCH_ID", nullable = false)

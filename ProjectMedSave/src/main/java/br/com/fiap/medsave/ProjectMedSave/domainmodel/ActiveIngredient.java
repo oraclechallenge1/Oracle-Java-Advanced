@@ -21,7 +21,7 @@ public class ActiveIngredient {
     private @Getter @Setter String name;
 
     @OneToMany(mappedBy = "activeIngredient", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<Medicines> medicines;
+    private @Getter @Setter Set<Medicine> medicines;
 
     @Override
     public boolean equals(Object o) {

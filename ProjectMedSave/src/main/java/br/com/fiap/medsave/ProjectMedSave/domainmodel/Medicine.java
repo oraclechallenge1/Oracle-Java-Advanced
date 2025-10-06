@@ -10,7 +10,7 @@ import java.util.Set;
 @Builder
 @Entity
 @Table(name = "MEDICINES")
-public class Medicines {
+public class Medicine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,8 +51,8 @@ public class Medicines {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Medicines medicines = (Medicines) o;
-        return Objects.equals(id, medicines.id);
+        Medicine medicine = (Medicine) o;
+        return Objects.equals(id, medicine.id);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Medicines {
 
     @Override
     public String toString() {
-        return "Medicines{" +
+        return "Medicine{" +
                 "id=" + id +
                 ", nameMedication='" + nameMedication + '\'' +
                 ", statusMed='" + statusMed + '\'' +
