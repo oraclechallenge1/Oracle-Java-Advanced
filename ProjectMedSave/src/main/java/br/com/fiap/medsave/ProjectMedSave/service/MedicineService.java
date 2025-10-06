@@ -13,7 +13,6 @@ public interface MedicineService {
     boolean existsById(Long id);
     void deleteById(Long id);
     void delete(Medicine medicine);
-    Medicine update(Medicine medicine);
-    Medicine partialUpdate(Long id, Medicine medicine);
+    Medicine update(Long id, Medicine medicine);
 
 }

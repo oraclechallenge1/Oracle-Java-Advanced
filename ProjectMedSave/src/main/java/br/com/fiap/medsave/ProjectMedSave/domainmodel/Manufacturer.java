@@ -31,9 +31,6 @@ public class Manufacturer {
     @JoinColumn(name = "CONTACT_MANU_ID", nullable = false)
     private @Getter @Setter ContactManufacturer contactManufacturer;
 
-    @OneToMany(mappedBy = "manufacturer", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<Batch> batches;
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

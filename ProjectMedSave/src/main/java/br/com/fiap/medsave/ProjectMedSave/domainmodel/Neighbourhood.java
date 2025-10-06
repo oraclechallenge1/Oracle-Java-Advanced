@@ -14,7 +14,7 @@ public class Neighbourhood {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "NEIGHB_ID")
+    @Column(name = "NEIGH_ID")
     private @Getter @Setter Long id;
 
     // Fiel ao DER: NEIGH_NAME

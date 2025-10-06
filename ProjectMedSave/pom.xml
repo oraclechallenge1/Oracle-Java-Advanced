@@ -103,6 +103,16 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<!-- NÃO filtra arquivos .properties -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

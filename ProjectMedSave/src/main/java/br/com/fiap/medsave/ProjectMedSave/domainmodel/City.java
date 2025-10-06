@@ -30,9 +30,6 @@ public class City {
     @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     private @Getter @Setter Set<Neighbourhood> neighborhoods;
 
-    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<Location> locations;
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

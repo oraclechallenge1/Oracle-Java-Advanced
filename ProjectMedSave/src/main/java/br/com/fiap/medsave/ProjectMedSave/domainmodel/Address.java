@@ -23,7 +23,7 @@ public class Address {
 
     // CORRIGIDO: O nome da coluna é NUMBER (Não NUMERIC) e é nullable = false (asterisco)
     @Column(name = "NUMBER", nullable = false, length = 7)
-    private @Getter @Setter String number; // Mapeado como String, mas com length 7 (NUMERIC(7))
+    private @Getter @Setter Integer number; // Mapeado como String, mas com length 7 (NUMERIC(7))
 
     // Fiel ao DER: DESCRIPTION (Com asterisco)
     @Column(name = "DESCRIPTION", nullable = false, length = 255)
@@ -35,7 +35,7 @@ public class Address {
 
     // Chave estrangeira N:1 com NEIGHBOURHOOD (Com asterisco, F*)
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "NEIGHB_ID", nullable = false)
+    @JoinColumn(name = "NEIGH_ID", nullable = false)
     private @Getter @Setter Neighbourhood neighborhood;
 
     // Relacionamento 1:N com MANUFACTURER (campo de navegação)
