@@ -2,6 +2,7 @@ package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
@@ -30,11 +31,12 @@ public class Batch {
     @Column(name = "EXPIRATION_DATE", nullable = false)
     private @Getter @Setter LocalDate expirationDate;
 
-    @OneToMany(mappedBy = "batch", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<Stock> stocks;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "MANUFAC_ID", nullable = false, unique = true)
+    private @Getter @Setter Manufacturer manufacturer;
 
     @OneToMany(mappedBy = "batch", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<MedicineDispense> dispenses;
+    private @Getter @Setter Set<Stock> stocks;
 
     @Override
     public boolean equals(Object o) {
@@ -44,9 +46,7 @@ public class Batch {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+    public int hashCode() { return Objects.hashCode(id); }
 
     @Override
     public String toString() {

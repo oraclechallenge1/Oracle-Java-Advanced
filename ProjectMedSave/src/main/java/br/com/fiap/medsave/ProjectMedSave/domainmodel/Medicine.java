@@ -24,7 +24,6 @@ public class Medicine {
     @Column(name = "STATUS_MED", nullable = false, length = 20)
     private @Getter @Setter String statusMed;
 
-    // Chaves Estrangeiras N:1 (Catálogo)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ACT_INGRE_ID", nullable = false)
     private @Getter @Setter ActiveIngredient activeIngredient;
@@ -41,12 +40,8 @@ public class Medicine {
     @JoinColumn(name = "UNIT_MEA_ID", nullable = false)
     private @Getter @Setter UnitMeasure unitMeasure;
 
-    // Relacionamentos 1:N (campos de navegação)
     @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY)
     private @Getter @Setter Set<Stock> stocks;
-
-    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<MedicineDispense> dispenses;
 
     @Override
     public boolean equals(Object o) {

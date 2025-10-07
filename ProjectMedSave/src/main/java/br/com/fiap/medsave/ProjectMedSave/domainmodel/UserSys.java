@@ -3,7 +3,6 @@ package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Objects;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,6 +25,7 @@ public class UserSys {
     @Column(name = "LOGIN", unique = true, length = 50)
     private @Getter @Setter String login;
 
+    // Perfil e posição continuam N:1
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PROF_USER_ID", nullable = false)
     private @Getter @Setter ProfileUser profile;
@@ -34,12 +34,10 @@ public class UserSys {
     @JoinColumn(name = "POS_USER_ID", nullable = false)
     private @Getter @Setter PositionUser position;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CONTACT_USER_ID", nullable = false)
+    // 1:1 com ContactUser (FK aqui)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "CONTACT_USER_ID", nullable = false, unique = true)
     private @Getter @Setter ContactUser contactUser;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<MedicineDispense> dispenses;
 
     @Override
     public boolean equals(Object o) {
@@ -49,9 +47,7 @@ public class UserSys {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+    public int hashCode() { return Objects.hashCode(id); }
 
     @Override
     public String toString() {

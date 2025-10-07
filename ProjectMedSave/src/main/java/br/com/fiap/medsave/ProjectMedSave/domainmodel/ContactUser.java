@@ -16,10 +16,10 @@ public class ContactUser {
     @Column(name = "CONTACT_USER_ID")
     private @Getter @Setter Long id;
 
-    @Column(name = "EMAIL_USER", unique = true, nullable = false, length = 200)
+    @Column(name = "EMAIL_USER", unique = true, nullable = false, length = 255)
     private @Getter @Setter String emailUser;
 
-    @Column(name = "PHONE_NUMBER_USER", unique = true, nullable = false, length = 15)
+    @Column(name = "PHONE_NUMBER_USER", unique = true, nullable = false, length = 11)
     private @Getter @Setter String phoneNumberUser;
 
     @OneToOne(mappedBy = "contactUser", fetch = FetchType.LAZY)
@@ -33,9 +33,7 @@ public class ContactUser {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+    public int hashCode() { return Objects.hashCode(id); }
 
     @Override
     public String toString() {

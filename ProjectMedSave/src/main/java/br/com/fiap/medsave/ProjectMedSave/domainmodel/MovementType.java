@@ -2,8 +2,8 @@ package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.Objects;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,11 +17,11 @@ public class MovementType {
     @Column(name = "MOVEMENT_TYPE_ID")
     private @Getter @Setter Long id;
 
-    @Column(name = "TYPE", nullable = false, length = 30)
-    private @Getter @Setter String type;
+    @Column(name = "TYPE", nullable = false, length = 50)
+    private @Getter @Setter String typeName;
 
-    @OneToMany(mappedBy = "movementType", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<MedicineDispense> dispenses;
+    @OneToOne(mappedBy = "movementType", fetch = FetchType.LAZY)
+    private @Getter @Setter MedicineDispense medicineDispense;
 
     @Override
     public boolean equals(Object o) {
@@ -31,15 +31,13 @@ public class MovementType {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+    public int hashCode() { return Objects.hashCode(id); }
 
     @Override
     public String toString() {
         return "MovementType{" +
                 "id=" + id +
-                ", type='" + type + '\'' +
+                ", typeName='" + typeName + '\'' +
                 '}';
     }
 }

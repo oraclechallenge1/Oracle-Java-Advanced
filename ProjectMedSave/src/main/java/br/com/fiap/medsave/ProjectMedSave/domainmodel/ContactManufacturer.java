@@ -2,6 +2,7 @@ package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -19,8 +20,11 @@ public class ContactManufacturer {
     @Column(name = "EMAIL_MANU", unique = true, nullable = false, length = 255)
     private @Getter @Setter String emailManu;
 
-    @Column(name = "PHONE_NUMBER_MANU", unique = true, nullable = false, length = 15)
+    @Column(name = "PHONE_NUMBER_MANU", unique = true, nullable = false, length = 11)
     private @Getter @Setter String phoneNumberManu;
+
+    @OneToOne(mappedBy = "contactManufacturer", fetch = FetchType.LAZY)
+    private @Getter @Setter Manufacturer manufacturer;
 
     @Override
     public boolean equals(Object o) {
@@ -30,9 +34,7 @@ public class ContactManufacturer {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+    public int hashCode() { return Objects.hashCode(id); }
 
     @Override
     public String toString() {

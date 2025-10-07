@@ -17,18 +17,18 @@ public class Neighbourhood {
     @Column(name = "NEIGH_ID")
     private @Getter @Setter Long id;
 
-    // Fiel ao DER: NEIGH_NAME
     @Column(name = "NEIGH_NAME", nullable = false, length = 255)
     private @Getter @Setter String neighName;
 
-    // Chave estrangeira N:1 com CITY
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CITY_ID", nullable = false)
     private @Getter @Setter City city;
 
-    // Relacionamento 1:N com ADDRESS
-    @OneToMany(mappedBy = "neighborhood", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<Address> addresses;
+    @OneToOne(mappedBy = "neighbourhood", fetch = FetchType.LAZY)
+    private @Getter @Setter AddressStock addressStock;
+
+    @OneToMany(mappedBy = "neighbourhood", fetch = FetchType.LAZY)
+    private @Getter @Setter Set<AddressManufacturer> addressManufacturers;
 
     @Override
     public boolean equals(Object o) {

@@ -2,8 +2,8 @@ package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.Objects;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,15 +21,18 @@ public class Manufacturer {
     private @Getter @Setter String nameManu;
 
     @Column(name = "CNPJ", unique = true, nullable = false, length = 14)
-    private @Getter @Setter String cnpj; // Mapeado como String (NUMERIC 14)
+    private @Getter @Setter String cnpj;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ADDRESS_ID", nullable = false)
-    private @Getter @Setter Address address;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CONTACT_MANU_ID", nullable = false)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CONTACT_MANU_ID", nullable = false, unique = true)
     private @Getter @Setter ContactManufacturer contactManufacturer;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ADDRESS_ID_MANUFACTURER", nullable = false, unique = true)
+    private @Getter @Setter AddressManufacturer address;
+
+    @OneToOne(mappedBy = "manufacturer", fetch = FetchType.LAZY)
+    private @Getter @Setter Batch batch;
 
     @Override
     public boolean equals(Object o) {
@@ -39,9 +42,7 @@ public class Manufacturer {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+    public int hashCode() { return Objects.hashCode(id); }
 
     @Override
     public String toString() {

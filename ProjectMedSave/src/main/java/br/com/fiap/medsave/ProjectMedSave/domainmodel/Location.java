@@ -2,6 +2,7 @@ package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,20 +24,22 @@ public class Location {
     @Column(name = "LOCATION_STOCK", nullable = false, length = 100)
     private @Getter @Setter String locationStock;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ADDRESS_ID_STOCK", nullable = false, unique = true)
+    private @Getter @Setter AddressStock addressStock;
+
     @OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
     private @Getter @Setter Set<Stock> stocks;
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Location location = (Location) o;
-        return Objects.equals(id, location.id);
+        Location that = (Location) o;
+        return Objects.equals(id, that.id);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+    public int hashCode() { return Objects.hashCode(id); }
 
     @Override
     public String toString() {
