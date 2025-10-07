@@ -1,0 +1,57 @@
+package br.com.fiap.medsave.ProjectMedSave.presentation.controller;
+
+import br.com.fiap.medsave.ProjectMedSave.domainmodel.CategoryMedicine;
+import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.CategoryMedicineDTO;
+import br.com.fiap.medsave.ProjectMedSave.service.CategoryMedicineService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/categories")
+public class CategoryMedicineApiController {
+
+    private final CategoryMedicineService service;
+
+    @GetMapping
+    public ResponseEntity<List<CategoryMedicineDTO>> findAll() {
+        List<CategoryMedicineDTO> list = service.findAll()
+                .stream()
+                .map(CategoryMedicineDTO::fromEntity)
+                .toList();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryMedicineDTO> findById(@PathVariable Long id) {
+        return service.findById(id)
+                .map(e -> ResponseEntity.ok(CategoryMedicineDTO.fromEntity(e)))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public ResponseEntity<CategoryMedicineDTO> create(@Valid @RequestBody CategoryMedicineDTO dto) {
+        CategoryMedicine created = service.create(CategoryMedicineDTO.toEntity(dto));
+        return new ResponseEntity<>(CategoryMedicineDTO.fromEntity(created), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryMedicineDTO> update(@PathVariable Long id,
+                                                      @Valid @RequestBody CategoryMedicineDTO dto) {
+        if (!service.existsById(id)) return ResponseEntity.notFound().build();
+        CategoryMedicine updated = service.update(id, CategoryMedicineDTO.toEntity(dto));
+        return ResponseEntity.ok(CategoryMedicineDTO.fromEntity(updated));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        if (!service.existsById(id)) return ResponseEntity.notFound().build();
+        service.removeById(id);
+        return ResponseEntity.noContent().build();
+    }
+}

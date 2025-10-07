@@ -30,7 +30,7 @@ public class AddressManufacturer {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "NEIGH_ID", nullable = false)
-    private @Getter @Setter Neighbourhood neighborhood;
+    private @Getter @Setter Neighbourhood neighbourhood;
 
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     private @Getter @Setter Manufacturer manufacturer;
