@@ -17,7 +17,7 @@ public class UnitMeasure {
     private @Getter @Setter Long id;
 
     @Column(name = "UNIT_MEASURE_MEDICINE", nullable = false, length = 20)
-    private @Getter @Setter String name;
+    private @Getter @Setter String unitMeasureMedicine;
 
     @Override
     public boolean equals(Object o) {
@@ -35,7 +35,7 @@ public class UnitMeasure {
     public String toString() {
         return "UnitMeasure{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", unitMeasureMedicine='" + unitMeasureMedicine + '\'' +
                 '}';
     }
 }
