@@ -9,7 +9,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "STATE")
+@Table(name = "STATES")
 public class State {
 
     @Id
@@ -20,7 +20,7 @@ public class State {
     @Column(name = "STATE_NAME", nullable = false, length = 255)
     private @Getter @Setter String name;
 
-    @OneToMany(mappedBy = "state", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "states", fetch = FetchType.LAZY)
     private @Getter @Setter Set<City> cities;
 
     @Override

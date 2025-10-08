@@ -10,7 +10,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "LOCATION")
+@Table(name = "LOCATION_STOCK")
 public class Location {
 
     @Id
@@ -21,7 +21,7 @@ public class Location {
     @Column(name = "NAME_LOCATION", nullable = false, length = 30)
     private @Getter @Setter String nameLocation;
 
-    @Column(name = "LOCATION_STOCK", nullable = false, length = 100)
+    @Column(name = "LOCATION_STOCK_NAME", nullable = false, length = 100)
     private @Getter @Setter String locationStock;
 
     @OneToOne(fetch = FetchType.EAGER)

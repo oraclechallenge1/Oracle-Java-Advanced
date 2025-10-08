@@ -19,10 +19,10 @@ public class AddressManufacturer {
     @Column(name = "COMPLEMENT", length = 255)
     private @Getter @Setter String complement;
 
-    @Column(name = "NUMBER", nullable = false, length = 7)
+    @Column(name = "NUMBER_MANU", nullable = false, length = 7)
     private @Getter @Setter Integer number;
 
-    @Column(name = "DESCRIPTION", nullable = false, length = 255)
+    @Column(name = "ADDRESS_DESCRIPTION", nullable = false, length = 255)
     private @Getter @Setter String description;
 
     @Column(name = "CEP", nullable = false, length = 8)
@@ -32,7 +32,7 @@ public class AddressManufacturer {
     @JoinColumn(name = "NEIGH_ID", nullable = false)
     private @Getter @Setter Neighbourhood neighbourhood;
 
-    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "addressManufacturer", fetch = FetchType.LAZY)
     private @Getter @Setter Manufacturer manufacturer;
 
     @Override

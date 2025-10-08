@@ -20,10 +20,10 @@ public class AddressStock {
     @Column(name = "COMPLEMENT", length = 255)
     private @Getter @Setter String complement;
 
-    @Column(name = "NUMBER", nullable = false, length = 7)
+    @Column(name = "NUMBER_STOCK", nullable = false, length = 7)
     private @Getter @Setter String number;
 
-    @Column(name = "DESCRIPTION", nullable = false, length = 255)
+    @Column(name = "ADDRESS_DESCRIPTION", nullable = false, length = 255)
     private @Getter @Setter String description;
 
     @Column(name = "CEP", nullable = false, length = 8)

@@ -17,7 +17,7 @@ public class MovementType {
     @Column(name = "MOVEMENT_TYPE_ID")
     private @Getter @Setter Long id;
 
-    @Column(name = "TYPE", nullable = false, length = 50)
+    @Column(name = "TYPE_NAME", nullable = false, length = 50)
     private @Getter @Setter String typeName;
 
     @OneToOne(mappedBy = "movementType", fetch = FetchType.LAZY)
