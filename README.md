@@ -268,7 +268,7 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 | DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
 | PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
 
-## Medicines ("/api/medicines")
+## Medicines ("/api/unit-measures")
 
 | Método | Endpoint                                   | Funcionalidade                                                   |
 |--------|--------------------------------------------|------------------------------------------------------------------|
@@ -279,4 +279,36 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 | DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
 | PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
 
+## Medicines ("/api/pharmaceutical-forms")
+
+| Método | Endpoint                                   | Funcionalidade                                                   |
+|--------|--------------------------------------------|------------------------------------------------------------------|
+| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
+| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
+| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
+| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
+| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
+| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
+
+## Medicines ("/api/active-ingredients")
+
+| Método | Endpoint                                   | Funcionalidade                                                   |
+|--------|--------------------------------------------|------------------------------------------------------------------|
+| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
+| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
+| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
+| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
+| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
+| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
+
+## Medicines ("/api/categories")
+
+| Método | Endpoint                                   | Funcionalidade                                                   |
+|--------|--------------------------------------------|------------------------------------------------------------------|
+| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
+| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
+| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
+| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
+| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
+| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
 
