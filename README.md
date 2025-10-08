@@ -251,11 +251,23 @@ USERS_SYS "1" --> "many" MEDICINE_DISPENSE : performed by
 </div>
 
 ---
+![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-3.9-blue?style=for-the-badge&logo=apachemaven&logoColor=white)
+![FIAP](https://img.shields.io/badge/FIAP-ED145B?style=for-the-badge)
+
+- **Java 21**
+- **Spring Boot 3.5**
+- **Spring Data JPA**
+- **H2 Database** (banco de dados local para testes)
+- **Oracle DB** (banco de dados real/final)
+- **Maven** (gerenciador de dependências)
+- **Springdoc OpenAPI** (documentação Swagger UI)
+---
 
 ## 🌐 Mapeamento de Endpoints (API REST)
 
 Os microserviços de backend são acessados através da nossa API REST. Abaixo está o mapeamento dos principais *endpoints*.
-
 
 ## Medicines ("/api/medicines")
 
@@ -265,50 +277,80 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 | GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
 | POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
 | DELETE | `/api/medicines/{id}`                      | Remove um medicamento por ID.                                    |
-| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
 | PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
 
-## Medicines ("/api/unit-measures")
+```bash
+{
+  "nameMedication": "string",
+  "statusMed": "string",
+  "activeIngredientId": 0,
+  "pharmFormId": 0,
+  "categoryMedicineId": 0,
+  "unitMeasureId": 0
+}
+```
+
+## UnitMeasure ("/api/unit-measures")
 
 | Método | Endpoint                                   | Funcionalidade                                                   |
 |--------|--------------------------------------------|------------------------------------------------------------------|
-| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
-| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
-| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
-| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
-| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
-| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
+| GET    | `/api/unit-measures`                       | Retorna todas as unidades de medida.                             |
+| GET    | `/api/unit-measure/{id}`                   | Retorna uma unidade de medida específica por ID.                 |
+| POST   | `/api/unit-measures`                       | Cadastra uma nova unidade de medida.                             |
+| DELETE | `/api/unit-measures/{id}`                  | Remove uma unidade de medida por ID.                             |
+| PUT    | `/api/medicines/{id}`                      | Atualiza uma unidade de medida específica por ID                 |
 
-## Medicines ("/api/pharmaceutical-forms")
+```bash
+{
+  "unit": "string"
+}
+```
 
-| Método | Endpoint                                   | Funcionalidade                                                   |
-|--------|--------------------------------------------|------------------------------------------------------------------|
-| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
-| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
-| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
-| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
-| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
-| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
-
-## Medicines ("/api/active-ingredients")
+## PharmaceuticalForm ("/api/pharmaceutical-forms")
 
 | Método | Endpoint                                   | Funcionalidade                                                   |
 |--------|--------------------------------------------|------------------------------------------------------------------|
-| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
-| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
-| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
-| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
-| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
-| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
+| GET    | `/api/pharmaceutical-forms`                | Retorna todas as formas farmaceuticas.                           |
+| GET    | `/api/pharmaceutical-forms/{id}`           | Retorna uma forma farmaceutica específica por ID.                |
+| POST   | `/api/pharmaceutical-forms`                | Cadastra uma nova forma farmaceutica.                            |
+| DELETE | `/api/pharmaceutical-forms/{id}`           | Remove uma forma farmaceutica por ID.                            |
+| PUT    | `/api/pharmaceutical-forms/{id}`           | Atualiza uma forma farmaceutica específica por ID                |
 
-## Medicines ("/api/categories")
+```bash
+{
+  "name": "string"
+}
+```
+
+## ActiveIngredient ("/api/active-ingredients")
 
 | Método | Endpoint                                   | Funcionalidade                                                   |
 |--------|--------------------------------------------|------------------------------------------------------------------|
-| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
-| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
-| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
-| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
-| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
-| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
+| GET    | `/api/active-ingredients`                  | Retorna todos os ingredientes ativos.                            |
+| GET    | `/api/active-ingredients/{id}`             | Retorna um ingrediente ativo específico por ID.                  |
+| POST   | `/api/active-ingredients`                  | Cadastra um novo ingrediente ativo.                              |
+| DELETE | `/api/medicines/{id}`                      | Remove um ingrediente ativo por ID.                              |
+| PUT    | `/api/medicines/{id}`                      | Atualiza um ingrediente ativo específico por ID                  |
+
+```bash
+{
+  "name": "string"
+}
+```
+
+## CategoryMedicine ("/api/categories")
+
+| Método | Endpoint                                   | Funcionalidade                                                   |
+|--------|--------------------------------------------|------------------------------------------------------------------|
+| GET    | `/api/categories`                          | Retorna todas as categorias.                                     |
+| GET    | `/api/categories/{id}`                     | Retorna uma categoria especifica por ID.                         |
+| POST   | `/api/categories`                          | Cadastra uma nova categoria.                                     |
+| DELETE | `/api/categories/{id}`                     | Remove uma categoria por ID.                                     |
+| PUT    | `/api/categories/{id}`                     | Atualiza uma categoria específica por ID                         |
+
+```bash
+{
+  "categoryName": "string"
+}
+```
 
