@@ -257,30 +257,26 @@ USERS_SYS "1" --> "many" MEDICINE_DISPENSE : performed by
 Os microserviços de backend são acessados através da nossa API REST. Abaixo está o mapeamento dos principais *endpoints*.
 
 
-## Medicines
+## Medicines ("/api/medicines")
 
-#### Retorna todos os itens
+| Método | Endpoint                                   | Funcionalidade                                                   |
+|--------|--------------------------------------------|------------------------------------------------------------------|
+| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
+| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
+| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
+| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
+| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
+| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
 
-```http
-  GET /api/items
-```
+## Medicines ("/api/medicines")
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `api_key` | `string` | **Obrigatório**. A chave da sua API |
-
-#### Retorna um item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | **Obrigatório**. O ID do item que você quer |
-
-#### add(num1, num2)
-
-Recebe dois números e retorna a sua soma.
+| Método | Endpoint                                   | Funcionalidade                                                   |
+|--------|--------------------------------------------|------------------------------------------------------------------|
+| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
+| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
+| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
+| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
+| DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
+| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
 
 
