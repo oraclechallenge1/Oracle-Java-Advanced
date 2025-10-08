@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/medicines")
-@Tag(name = "Medicines", description = "Operações relacionadas a medicamentos.")
+@Tag(name = "Medicines", description = "Operações de remédio")
 public class MedicineApiController {
 
     private final MedicineService medicineService;
@@ -49,20 +49,12 @@ public class MedicineApiController {
     }
 
     @Operation(summary = "Remover por ID", method = "DELETE")
-    @DeleteMapping
-    public ResponseEntity<Void> deleteById(@RequestBody Long id){
-        if (!this.medicineService.existsById(id))
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        if (!this.medicineService.existsById(id)) {
             return ResponseEntity.notFound().build();
+        }
         this.medicineService.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @Operation(summary = "Remover objeto completo", method = "DELETE")
-    @DeleteMapping("/removeObject")
-    public ResponseEntity<Void> delete(@RequestBody MedicineDTO dto){
-        if (dto.getId() == null || !this.medicineService.existsById(dto.getId()))
-            return ResponseEntity.notFound().build();
-        this.medicineService.delete(MedicineDTO.toEntity(dto));
         return ResponseEntity.noContent().build();
     }
 

@@ -29,7 +29,7 @@ public class Manufacturer {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ADDRESS_ID_MANUFACTURER", nullable = false, unique = true)
-    private @Getter @Setter AddressManufacturer address;
+    private @Getter @Setter AddressManufacturer addressManufacturer;
 
     @OneToOne(mappedBy = "manufacturer", fetch = FetchType.LAZY)
     private @Getter @Setter Batch batch;

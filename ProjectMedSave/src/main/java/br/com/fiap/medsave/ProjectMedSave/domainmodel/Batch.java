@@ -35,7 +35,7 @@ public class Batch {
     @JoinColumn(name = "MANUFAC_ID", nullable = false, unique = true)
     private @Getter @Setter Manufacturer manufacturer;
 
-    @OneToMany(mappedBy = "batchMedicine", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "batch", fetch = FetchType.LAZY)
     private @Getter @Setter Set<Stock> stocks;
 
     @Override

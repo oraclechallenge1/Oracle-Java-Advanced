@@ -20,7 +20,7 @@ public class State {
     @Column(name = "STATE_NAME", nullable = false, length = 255)
     private @Getter @Setter String name;
 
-    @OneToMany(mappedBy = "states", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "state", fetch = FetchType.LAZY)
     private @Getter @Setter Set<City> cities;
 
     @Override
