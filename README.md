@@ -264,7 +264,7 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 | GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
 | GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
 | POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
-| DELETE | `/api/medicines`                           | Remove um medicamento por ID.                                    |
+| DELETE | `/api/medicines/{id}`                      | Remove um medicamento por ID.                                    |
 | DELETE | `/api/medicines/removeObject`              | Remove todos os medicamentos.                                    |
 | PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
 
