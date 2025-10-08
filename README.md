@@ -25,14 +25,19 @@ A MedSave adota uma arquitetura moderna e escalável, utilizando o melhor de cad
 
 * **Frontend & BI:** **Oracle Apex**
 * **Backend & Microserviços:** **Java** e **C#**
+* **Mobile:** **React Native**
+* **Banco de Dados:** **Oracle DB**
+* **Cloud:** **Oracle Cloud Infrastructure**
 
 ---
 
 ## 🤝 Integrantes do Projeto
 
-### `descricaoIntegrantes`
-
-*Insira aqui a lista de membros da equipe, com nomes e funções, em formato de lista (ex: - Nome Sobrenome: Função)*
+| Nome                                  | Função no Projeto          | LinkedIn | GitHub |
+|---------------------------------------|----------------------------|----------|--------|
+| Cleyton Enrike de Oliveira            | Desenvolvedor .NET & IOT   | [LinkedIn](https://www.linkedin.com/in/cleyton-enrike-de-oliveira99) | [@Cleytonrik99](https://github.com/Cleytonrik99) |
+| Matheus Henrique Nascimento de Freitas| Desenvolvedor Mobile & DBA | [LinkedIn](https://www.linkedin.com/in/matheus-henrique-freitas)     | [@MatheusHenriqueNF](https://github.com/MatheusHenriqueNF) |
+| Pedro Henrique Sena                   | Desenvolvedor Java & DevOps| [LinkedIn](https://www.linkedin.com/in/pedro-henrique-sena)          | [@devpedrosena1](https://github.com/devpedrosena1) |
 
 ---
 
@@ -44,9 +49,7 @@ A MedSave adota uma arquitetura moderna e escalável, utilizando o melhor de cad
 
 ---
 
-## 🎬 Demonstração da Plataforma
-
-Veja como o MedSave funciona na prática, transformando o caos do estoque em clareza estratégica.
+## 🎬 Pitch
 
 ▶️ [**Assista ao nosso vídeo demonstrativo no YouTube**](linkDoVideoYt)
 
