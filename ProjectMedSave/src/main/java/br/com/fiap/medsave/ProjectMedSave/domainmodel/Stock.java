@@ -26,12 +26,12 @@ public class Stock {
     private @Getter @Setter Medicine medicine;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "BATCH_ID", nullable = false)
+    @JoinColumn(name = "BATCH_ID_MEDICINE", nullable = false)
     private @Getter @Setter Batch batch;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "LOCATION_ID", nullable = false)
-    private @Getter @Setter Location location;
+    @JoinColumn(name = "LOCATION_ID_STOCK", nullable = false)
+    private @Getter @Setter LocationStock location;
 
     @Override
     public boolean equals(Object o) {

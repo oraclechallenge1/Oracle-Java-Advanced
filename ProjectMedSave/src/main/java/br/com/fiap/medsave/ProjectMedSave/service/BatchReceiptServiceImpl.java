@@ -25,7 +25,7 @@ public class BatchReceiptServiceImpl implements BatchReceiptService {
         Medicine medicine = medicineRepository.findById(dto.getMedicineId())
                 .orElseThrow(() -> new EntityNotFoundException("Medicine not found."));
 
-        Location location = locationRepository.findById(dto.getLocationId())
+        LocationStock location = locationRepository.findById(dto.getLocationId())
                 .orElseThrow(() -> new EntityNotFoundException("Location not found."));
 
         Manufacturer manufacturer = manufacturerRepository.findById(dto.getManufacturerId())

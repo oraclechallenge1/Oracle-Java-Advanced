@@ -26,7 +26,7 @@ public class AddressManufacturer {
     private @Getter @Setter String description;
 
     @Column(name = "CEP", nullable = false, length = 8)
-    private @Getter @Setter String cep;
+    private @Getter @Setter Integer cep;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "NEIGH_ID", nullable = false)

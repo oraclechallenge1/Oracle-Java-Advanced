@@ -27,14 +27,14 @@ public class AddressStock {
     private @Getter @Setter String description;
 
     @Column(name = "CEP", nullable = false, length = 8)
-    private @Getter @Setter String cep;
+    private @Getter @Setter Integer cep;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "NEIGH_ID", nullable = false, unique = true)
     private @Getter @Setter Neighbourhood neighbourhood;
 
     @OneToOne(mappedBy = "addressStock", fetch = FetchType.LAZY)
-    private @Getter @Setter Location location;
+    private @Getter @Setter LocationStock location;
 
     @Override
     public boolean equals(Object o) {

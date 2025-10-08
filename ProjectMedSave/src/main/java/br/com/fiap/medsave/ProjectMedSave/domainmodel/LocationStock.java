@@ -11,17 +11,17 @@ import java.util.Set;
 @Builder
 @Entity
 @Table(name = "LOCATION_STOCK")
-public class Location {
+public class LocationStock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "LOCATION_ID")
+    @Column(name = "LOCATION_ID_STOCK")
     private @Getter @Setter Long id;
 
-    @Column(name = "NAME_LOCATION", nullable = false, length = 30)
+    @Column(name = "LOCATION_STOCK_NAME", nullable = false, length = 30)
     private @Getter @Setter String nameLocation;
 
-    @Column(name = "LOCATION_STOCK_NAME", nullable = false, length = 100)
+    @Column(name = "LOCATION_DESCRIPTION", nullable = false, length = 100)
     private @Getter @Setter String locationStock;
 
     @OneToOne(fetch = FetchType.EAGER)
@@ -34,7 +34,7 @@ public class Location {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Location that = (Location) o;
+        LocationStock that = (LocationStock) o;
         return Objects.equals(id, that.id);
     }
 
