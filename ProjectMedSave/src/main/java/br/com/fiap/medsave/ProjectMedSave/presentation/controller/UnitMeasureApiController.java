@@ -3,6 +3,7 @@ package br.com.fiap.medsave.ProjectMedSave.presentation.controller;
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.UnitMeasure;
 import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.UnitMeasureDTO;
 import br.com.fiap.medsave.ProjectMedSave.service.UnitMeasureService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/unit-measures")
+@Tag(name = "Unit Measure", description = "Operações relacionadas a unidade de medida")
 public class UnitMeasureApiController {
 
     private final UnitMeasureService service;

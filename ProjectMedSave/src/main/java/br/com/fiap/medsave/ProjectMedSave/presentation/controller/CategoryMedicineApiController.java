@@ -3,6 +3,7 @@ package br.com.fiap.medsave.ProjectMedSave.presentation.controller;
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.CategoryMedicine;
 import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.CategoryMedicineDTO;
 import br.com.fiap.medsave.ProjectMedSave.service.CategoryMedicineService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/categories")
+@Tag(name = "Category Medicine", description = "Operações relacionadas a categorias de medicamentos")
 public class CategoryMedicineApiController {
 
     private final CategoryMedicineService service;

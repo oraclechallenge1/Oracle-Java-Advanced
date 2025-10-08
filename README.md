@@ -63,185 +63,155 @@ O diagrama abaixo representa as principais entidades e seus relacionamentos no e
 ---
 config:
   theme: neo-dark
-  layout: elk
-  look: neo
+  look: classic
 ---
 classDiagram
-%% =======================
-%%   CORE – LOCALIDADE
-%% =======================
 class STATE {
-  +NUMBER STATE_ID <<PK>>
-  VARCHAR(265) STATE_NAME
+  +NUMERIC STATE_ID <<PK>>
+  VARCHAR(255) STATE_NAME
 }
-
 class CITY {
-  +NUMBER CITY_ID <<PK>>
+  +NUMERIC CITY_ID <<PK>>
   VARCHAR(255) NAME_CITY
-  NUMBER STATE_ID <<FK>>
-}          
-
+  NUMERIC STATE_ID <<FK>>
+}
 class NEIGHBOURHOOD {
-  +NUMBER NEIGH_ID <<PK>>
+  +NUMERIC NEIGH_ID <<PK>>
   VARCHAR(255) NEIGH_NAME
-  NUMBER CITY_ID <<FK>>
+  NUMERIC CITY_ID <<FK>>
 }
-
-class ADDRESS {
-  +NUMBER ADDRESS_ID <<PK>>
-  VARCHAR(265) COMPLEMENT
-  VARCHAR(8)  CEP
-  VARCHAR(265) DESCRIPTION
-  VARCHAR(6)  NUMBER
-  NUMBER NEIGH_ID <<FK>>
+class ADDRESS_STOCK {
+  +NUMERIC ADDRESS_ID_STOCK <<PK>>
+  VARCHAR(255) COMPLEMENT
+  NUMERIC(7)  NUMBER
+  VARCHAR(255) DESCRIPTION
+  NUMERIC(8)  CEP
+  NUMERIC NEIGH_ID <<FK>>
 }
-
+class ADDRESS_MANUFACTURER {
+  +NUMERIC ADDRESS_ID_MANUFACTURER <<PK>>
+  VARCHAR(255) COMPLEMENT
+  NUMERIC(7)  NUMBER
+  VARCHAR(255) DESCRIPTION
+  NUMERIC(8)  CEP
+  NUMERIC NEIGH_ID <<FK>>
+}
 STATE "1" --> "many" CITY : has
 CITY "1" --> "many" NEIGHBOURHOOD : has
-NEIGHBOURHOOD "1" --> "many" ADDRESS : has
-
-%% =======================
-%%   CADASTROS – MEDICINA
-%% =======================
+NEIGHBOURHOOD "1" --> "many" ADDRESS_STOCK : has
+NEIGHBOURHOOD "1" --> "many" ADDRESS_MANUFACTURER : has
+class LOCATION {
+  +NUMERIC LOCATION_ID <<PK>>
+  VARCHAR(30)  NAME_LOCATION
+  VARCHAR(100) LOCATION_STOCK
+  NUMERIC ADDRESS_ID_STOCK <<FK>>
+}
+class BATCH {
+  +NUMERIC BATCH_ID <<PK>>
+  VARCHAR(255) BATCH_NUMBER
+  NUMERIC CURRENT_QUANTITY
+  Date MANUFACTURING_DATE
+  Date EXPIRATION_DATE
+  NUMERIC MANUFAC_ID <<FK>>
+}
+class STOCK {
+  +NUMERIC STOCK_ID <<PK>>
+  NUMERIC(6) QUANTITY
+  NUMERIC BATCH_ID <<FK>>
+  NUMERIC MEDICINE_ID <<FK>>
+  NUMERIC LOCATION_ID <<FK>>
+}
+ADDRESS_STOCK "1" --> "many" LOCATION : located at
+BATCH "1" --> "many" STOCK : provides
+LOCATION "1" --> "many" STOCK : stores
 class ACTIVE_INGREDIENT {
-  +NUMBER ACT_INGRE_ID <<PK>>
+  +NUMERIC ACT_INGRE_ID <<PK>>
   VARCHAR(200) ACT_INGREDIENT
 }
-
 class PHARMACEUTICAL_FORM {
-  +NUMBER PHARM_FORM_ID <<PK>>
+  +NUMERIC PHARM_FORM_ID <<PK>>
   VARCHAR(100) PHARMA_FORM
 }
-
 class UNIT_MEASURE {
-  +NUMBER UNIT_MEA_ID <<PK>>
+  +NUMERIC UNIT_MEA_ID <<PK>>
   VARCHAR(20) UNIT_MEASURE_MEDICINE
 }
-
 class CATEGORY_MEDICINE {
-  +NUMBER CATEGORY_MED_ID <<PK>>
+  +NUMERIC CATEGORY_MED_ID <<PK>>
   VARCHAR(255) CATEGORY
 }
-
-class CONTACT_MANUFACTURER {
-  +NUMBER CONTACT_ID <<PK>>
-  VARCHAR EMAIL_MANU
-  NUMBER  PHONE_NUMBER_MANU
-}
-
-class MANUFACTURER {
-  +NUMBER MANUFAC_ID <<PK>>
-  VARCHAR(255) NAME_MANU
-  NUMBER(14) CNPJ
-  NUMBER ADDRESS_ID <<FK>>
-  NUMBER CONTACT_ID <<FK>>
-}
-
 class MEDICINES {
-  +NUMBER MEDICINE_ID <<PK>>
+  +NUMERIC MEDICINE_ID <<PK>>
   VARCHAR(255) NAME_MEDICATION
-  VARCHAR(200) STATUS_MED
-  NUMBER CATEGORY_MED_ID <<FK>>
-  NUMBER UNIT_MEA_ID <<FK>>
-  NUMBER PHARM_FORM_ID <<FK>>
-  NUMBER ACT_INGRE_ID <<FK>>
-  NUMBER MANUFAC_ID <<FK>>
+  VARCHAR(20)  STATUS_MED
+  NUMERIC CATEGORY_MED_ID <<FK>>
+  NUMERIC UNIT_MEA_ID <<FK>>
+  NUMERIC PHARM_FORM_ID <<FK>>
+  NUMERIC ACT_INGRE_ID <<FK>>
 }
-
-ADDRESS "1" --> "many" MANUFACTURER : located at
-CONTACT_MANUFACTURER "1" --> "1" MANUFACTURER : contact of
-ACTIVE_INGREDIENT "1" --> "many" MEDICINES : composes
-PHARMACEUTICAL_FORM "1" --> "many" MEDICINES : has form
-UNIT_MEASURE "1" --> "many" MEDICINES : measured in
-CATEGORY_MEDICINE "1" --> "many" MEDICINES : belongs to
-MANUFACTURER "1" --> "many" MEDICINES : produces
-
-%% =======================
-%%   ESTOQUE / LOTE / LOCAL
-%% =======================
-class LOCATION {
-  +NUMBER LOCATION_ID <<PK>>
-  VARCHAR(30)  NAME_LOCATION
-  VARCHAR(100) LOCATION
-}
-
-class BATCH {
-  +NUMBER BATCH_ID <<PK>>
-  VARCHAR(255) BATCH_NUMBER
-  NUMBER CURRENT_QUANTITY
-  DATE   MANUFACTURING_DATE
-  DATE   EXPIRATION_DATE
-}
-
-class STOCK {
-  +NUMBER STOCK_ID <<PK>>
-  NUMBER QUANTITY
-  NUMBER BATCH_ID <<FK>>
-  NUMBER MEDICINE_ID <<FK>>
-  NUMBER LOCATION_ID <<FK>>
-}
-
-LOCATION "1" --> "many" STOCK : stores
-BATCH "1" --> "many" STOCK : provides
+ACTIVE_INGREDIENT "1" --> "many" MEDICINES : ingredient
+PHARMACEUTICAL_FORM "1" --> "many" MEDICINES : form
+UNIT_MEASURE "1" --> "many" MEDICINES : unit
+CATEGORY_MEDICINE "1" --> "many" MEDICINES : category
 MEDICINES "1" --> "many" STOCK : stocked
-
-%% =======================
-%%   MOVIMENTAÇÃO / DISPENSAÇÃO
-%% =======================
+class CONTACT_MANUFACTURER {
+  +NUMERIC CONTACT_MANU_ID <<PK>>
+  VARCHAR(255) EMAIL_MANU
+  NUMERIC(11)  PHONE_NUMBER_MANU
+}
+class MANUFACTURER {
+  +NUMERIC MANUFAC_ID <<PK>>
+  VARCHAR(255) NAME_MANU
+  NUMERIC(14)  CNPJ
+  NUMERIC CONTACT_MANU_ID <<FK>>
+  NUMERIC ADDRESS_ID_MANUFACTURER <<FK>>
+}
+ADDRESS_MANUFACTURER "1" --> "many" MANUFACTURER : located at
+CONTACT_MANUFACTURER "1" --> "1" MANUFACTURER : contact of
+MANUFACTURER "1" --> "many" BATCH : produces
 class MOVEMENT_TYPE {
-  +NUMBER MOVEMENT_TYPE_ID <<PK>>
+  +NUMERIC MOVEMENT_TYPE_ID <<PK>>
   VARCHAR(30) TYPE
 }
-
 class MEDICINE_DISPENSE {
-  +NUMBER DISPENSATION_ID <<PK>>
-  DATE  DATE_DISPENSATION
-  NUMBER QUANTITY_DISPENSED
-  VARCHAR(265) DESTINATION
+  +NUMERIC DISPENSATION_ID <<PK>>
+  Date DATE_DISPENSATION
+  NUMERIC(6) QUANTITY_DISPENSED
+  VARCHAR(255) DESTINATION
   VARCHAR(255) OBSERVATION
-  NUMBER MOVEMENT_TYPE_ID <<FK>>
-  NUMBER USER_ID <<FK>>
-  NUMBER MEDICINE_ID <<FK>>
-  NUMBER BATCH_ID <<FK>>
+  NUMERIC USER_ID <<FK>>
+  NUMERIC MOVEMENT_TYPE_ID <<FK>>
+  NUMERIC STOCK_ID <<FK>>
 }
-
 MOVEMENT_TYPE "1" --> "many" MEDICINE_DISPENSE : classifies
-USERS_SYS "1" --> "many" MEDICINE_DISPENSE : performed by
-MEDICINES "1" --> "many" MEDICINE_DISPENSE : references
-BATCH "1" --> "many" MEDICINE_DISPENSE : from batch
-
-%% =======================
-%%   USUÁRIOS / PERMISSÕES
-%% =======================
+STOCK "1" --> "many" MEDICINE_DISPENSE : consumes
 class CONTACT_USER {
-  +NUMBER CONTACT_ID <<PK>>
-  VARCHAR EMAIL_USER
-  NUMBER  PHONE_NUMBER_USER
+  +NUMERIC CONTACT_USER_ID <<PK>>
+  VARCHAR(255) EMAIL_USER
+  NUMERIC(11)  PHONE_NUMBER_USER
 }
-
 class POSITION_USER {
-  +NUMBER POS_USER_ID <<PK>>
+  +NUMERIC POS_USER_ID <<PK>>
   VARCHAR(100) USER_POSITION
 }
-
 class PROFILE_USER {
-  +NUMBER PROF_USER_ID <<PK>>
+  +NUMERIC PROF_USER_ID <<PK>>
   VARCHAR(50) USER_PROFILE
 }
-
 class USERS_SYS {
-  +NUMBER USER_ID <<PK>>
+  +NUMERIC USER_ID <<PK>>
   VARCHAR(150) NAME_USER
-  VARCHAR(50)  LOGIN
+  VARCHAR(50)  LOGIN <<U>>
   VARCHAR(255) PASSWORD_USER
-  NUMBER POS_USER_ID <<FK>>
-  NUMBER PROF_USER_ID <<FK>>
-  NUMBER CONTACT_ID <<FK>>
+  NUMERIC POS_USER_ID <<FK>>
+  NUMERIC PROF_USER_ID <<FK>>
+  NUMERIC CONTACT_USER_ID <<FK>>
 }
-
-POSITION_USER "1" --> "many" USERS_SYS : role
+POSITION_USER "1" --> "many" USERS_SYS : position
 PROFILE_USER "1" --> "many" USERS_SYS : profile
 CONTACT_USER "1" --> "1" USERS_SYS : contact
+USERS_SYS "1" --> "many" MEDICINE_DISPENSE : performed by
+
 ```
 
 ---
@@ -249,7 +219,7 @@ CONTACT_USER "1" --> "1" USERS_SYS : contact
 ### 🗃️ Diagrama de Entidade-Relacionamento (DER)
 
 <div align="center">
-  <img src="images/der.jpg" alt="Cronograma do Projeto MedSave" style="max-width: 90%; border: 1px solid #ddd; border-radius: 4px;">
+  <img src="images/Logical.png" alt="Cronograma do Projeto MedSave" style="max-width: 90%; border: 1px solid #ddd; border-radius: 4px;">
 </div>
 
 ---
@@ -260,90 +230,6 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 
 
 ## Medicines
-
-#### Retorna todos os itens
-
-```http
-  GET /api/items
-```
-
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `api_key` | `string` | **Obrigatório**. A chave da sua API |
-
-#### Retorna um item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | **Obrigatório**. O ID do item que você quer |
-
-#### add(num1, num2)
-
-Recebe dois números e retorna a sua soma.
-
-
-
-## Stock Batch
-
-#### Retorna todos os itens
-
-```http
-  GET /api/items
-```
-
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `api_key` | `string` | **Obrigatório**. A chave da sua API |
-
-#### Retorna um item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | **Obrigatório**. O ID do item que você quer |
-
-#### add(num1, num2)
-
-Recebe dois números e retorna a sua soma.
-
-
-
-## Dispensation
-
-#### Retorna todos os itens
-
-```http
-  GET /api/items
-```
-
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `api_key` | `string` | **Obrigatório**. A chave da sua API |
-
-#### Retorna um item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | **Obrigatório**. O ID do item que você quer |
-
-#### add(num1, num2)
-
-Recebe dois números e retorna a sua soma.
-
-
-
-## User
 
 #### Retorna todos os itens
 
