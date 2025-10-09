@@ -15,7 +15,7 @@ public class ActiveIngredientDTO {
 
     @NotBlank(message = "Nome do princípio ativo é obrigatório")
     @Size(max = 200, message = "Nome deve ter no máximo 200 caracteres")
-    private String name; // mapeia ACT_INGREDIENT
+    private String name;
 
     public static ActiveIngredientDTO fromEntity(ActiveIngredient e) {
         if (e == null) return null;

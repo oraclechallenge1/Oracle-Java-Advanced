@@ -17,11 +17,9 @@ public class PositionUser {
     @Column(name = "POS_USER_ID")
     private @Getter @Setter Long id;
 
-    // Fiel ao DER: USER_POSITION
     @Column(name = "USER_POSITION", nullable = false, length = 100)
     private @Getter @Setter String userPosition;
 
-    // Relacionamento 1:N com USERS_SYS (campo de navegação)
     @OneToMany(mappedBy = "position", fetch = FetchType.LAZY)
     private @Getter @Setter Set<UserSys> users;
 

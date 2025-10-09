@@ -20,7 +20,6 @@ public class Medicine {
     @Column(name = "NAME_MEDICATION", nullable = false, length = 255)
     private @Getter @Setter String nameMedication;
 
-    // CORRIGIDO: STATUS_MED é obrigatório (*)
     @Column(name = "STATUS_MED", nullable = false, length = 20)
     private @Getter @Setter String statusMed;
 

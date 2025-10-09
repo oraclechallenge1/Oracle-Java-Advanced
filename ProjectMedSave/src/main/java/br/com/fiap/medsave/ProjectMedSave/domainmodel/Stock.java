@@ -16,11 +16,9 @@ public class Stock {
     @Column(name = "STOCK_ID")
     private @Getter @Setter Long id;
 
-    // Fiel ao DER: QUANTITY
     @Column(name = "QUANTITY", nullable = false)
-    private @Getter @Setter Integer quantity; // Mapeando NUMERIC para Integer
+    private @Getter @Setter Integer quantity;
 
-    // Chaves Estrangeiras N:1
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MEDICINE_ID", nullable = false)
     private @Getter @Setter Medicine medicine;

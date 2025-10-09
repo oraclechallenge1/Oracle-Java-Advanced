@@ -25,7 +25,6 @@ public class UserSys {
     @Column(name = "LOGIN", unique = true, length = 50)
     private @Getter @Setter String login;
 
-    // Perfil e posição continuam N:1
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PROF_USER_ID", nullable = false)
     private @Getter @Setter ProfileUser profile;
@@ -34,7 +33,6 @@ public class UserSys {
     @JoinColumn(name = "POS_USER_ID", nullable = false)
     private @Getter @Setter PositionUser position;
 
-    // 1:1 com ContactUser (FK aqui)
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "CONTACT_USER_ID", nullable = false, unique = true)
     private @Getter @Setter ContactUser contactUser;

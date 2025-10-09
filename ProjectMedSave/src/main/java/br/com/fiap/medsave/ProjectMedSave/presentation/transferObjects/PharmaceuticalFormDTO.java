@@ -15,7 +15,7 @@ public class PharmaceuticalFormDTO {
 
     @NotBlank(message = "Nome da forma farmacêutica é obrigatório")
     @Size(max = 100, message = "Nome deve ter no máximo 100 caracteres")
-    private String name; // mapeia PHARMA_FORM
+    private String name;
 
     public static PharmaceuticalFormDTO fromEntity(PharmaceuticalForm e) {
         if (e == null) return null;
