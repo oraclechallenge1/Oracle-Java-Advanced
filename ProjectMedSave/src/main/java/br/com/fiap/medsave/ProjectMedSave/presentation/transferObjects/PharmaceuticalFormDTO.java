@@ -21,7 +21,7 @@ public class PharmaceuticalFormDTO {
         if (e == null) return null;
         return PharmaceuticalFormDTO.builder()
                 .id(e.getId())
-                .name(e.getName())
+                .name(e.getNamePharmForm())
                 .build();
     }
 
@@ -29,7 +29,7 @@ public class PharmaceuticalFormDTO {
         if (d == null) return null;
         PharmaceuticalForm e = new PharmaceuticalForm();
         e.setId(d.getId());
-        e.setName(d.getName());
+        e.setNamePharmForm(d.getName());
         return e;
     }
 }

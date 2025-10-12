@@ -7,7 +7,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 @Builder
 public class ActiveIngredientDTO {
 
@@ -15,13 +16,13 @@ public class ActiveIngredientDTO {
 
     @NotBlank(message = "Nome do princípio ativo é obrigatório")
     @Size(max = 200, message = "Nome deve ter no máximo 200 caracteres")
-    private String name;
+    private String nameActiveIngre; // <-- mesmo nome do campo na entidade
 
     public static ActiveIngredientDTO fromEntity(ActiveIngredient e) {
         if (e == null) return null;
         return ActiveIngredientDTO.builder()
                 .id(e.getId())
-                .name(e.getName())
+                .nameActiveIngre(e.getNameActiveIngre())
                 .build();
     }
 
@@ -29,7 +30,7 @@ public class ActiveIngredientDTO {
         if (d == null) return null;
         ActiveIngredient e = new ActiveIngredient();
         e.setId(d.getId());
-        e.setName(d.getName());
+        e.setNameActiveIngre(d.getNameActiveIngre());
         return e;
     }
 }

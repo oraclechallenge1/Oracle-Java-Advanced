@@ -2,6 +2,8 @@ package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,33 +25,36 @@ public class Medicine {
     @Column(name = "STATUS_MED", nullable = false, length = 20)
     private @Getter @Setter String statusMed;
 
-    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<MedicineActiveIngr> activeIngredients;
+    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private @Getter @Setter Set<MedicineActiveIngr> activeIngredients = new HashSet<>();
 
-    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<MedicinePharmForm> pharmForms;
+    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private @Getter @Setter Set<MedicinePharmForm> pharmForms = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "CATEGORY_MED_ID", nullable = false)
     private @Getter @Setter CategoryMedicine categoryMedicine;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "UNIT_MEA_ID", nullable = false)
     private @Getter @Setter UnitMeasure unitMeasure;
 
     @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<Stock> stocks;
+    private @Getter @Setter Set<Stock> stocks = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Medicine medicine = (Medicine) o;
-        return Objects.equals(id, medicine.id);
+        Medicine other = (Medicine) o;
+        return id != null && id.equals(other.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return 31; // valor fixo evita erro em entidades novas
     }
 
     @Override

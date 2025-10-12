@@ -2,6 +2,8 @@ package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,29 +19,25 @@ public class PharmaceuticalForm {
     @Column(name = "PHARM_FORM_ID")
     private @Getter @Setter Long id;
 
-    @Column(name = "PHARMA_FORM", nullable = false, length = 100)
-    private @Getter @Setter String name;
+    @Column(name = "NAME_PHARM_FORM", nullable = false, length = 100)
+    private @Getter @Setter String namePharmForm;
 
-    @OneToMany(mappedBy = "pharmaceuticalForm", fetch = FetchType.LAZY)
-    private @Getter @Setter Set<Medicine> medicines;
+    @OneToMany(mappedBy = "pharmaceuticalForm", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private @Getter @Setter Set<MedicinePharmForm> medicines = new HashSet<>();
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o){
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PharmaceuticalForm that = (PharmaceuticalForm) o;
-        return Objects.equals(id, that.id);
+        PharmaceuticalForm other = (PharmaceuticalForm) o;
+        return id != null && id.equals(other.id);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
+    @Override public int hashCode(){ return 31; }
+    @Override public String toString(){
         return "PharmaceuticalForm{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", namePharmForm='" + namePharmForm + '\'' +
                 '}';
     }
 }

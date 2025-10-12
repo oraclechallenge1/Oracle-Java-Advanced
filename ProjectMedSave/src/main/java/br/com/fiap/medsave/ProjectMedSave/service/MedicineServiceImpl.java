@@ -2,6 +2,7 @@ package br.com.fiap.medsave.ProjectMedSave.service;
 
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.Medicine;
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.MedicineRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -50,11 +51,28 @@ public class MedicineServiceImpl implements  MedicineService {
     }
 
     @Override
-    public Medicine update(Long id, Medicine medicine) {
-        if (!this.repository.existsById(id)) {
-            throw new IllegalArgumentException("Entity not found.");
+    @Transactional
+    public Medicine update(Long id, Medicine incoming) {
+        Medicine current = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Entity not found."));
+
+        current.setNameMedication(incoming.getNameMedication());
+        current.setStatusMed(incoming.getStatusMed());
+        current.setCategoryMedicine(incoming.getCategoryMedicine());
+        current.setUnitMeasure(incoming.getUnitMeasure());
+
+        current.getActiveIngredients().clear();
+        if (incoming.getActiveIngredients() != null) {
+            incoming.getActiveIngredients().forEach(link -> link.setMedicine(current));
+            current.getActiveIngredients().addAll(incoming.getActiveIngredients());
         }
-        medicine.setId(id);
-        return this.repository.save(medicine);
+
+        current.getPharmForms().clear();
+        if (incoming.getPharmForms() != null) {
+            incoming.getPharmForms().forEach(link -> link.setMedicine(current));
+            current.getPharmForms().addAll(incoming.getPharmForms());
+        }
+
+        return repository.save(current);
     }
 }
