@@ -23,13 +23,11 @@ public class Medicine {
     @Column(name = "STATUS_MED", nullable = false, length = 20)
     private @Getter @Setter String statusMed;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ACT_INGRE_ID", nullable = false)
-    private @Getter @Setter ActiveIngredient activeIngredient;
+    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY)
+    private @Getter @Setter Set<MedicineActiveIngr> activeIngredients;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "PHARM_FORM_ID", nullable = false)
-    private @Getter @Setter PharmaceuticalForm pharmaceuticalForm;
+    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY)
+    private @Getter @Setter Set<MedicinePharmForm> pharmForms;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CATEGORY_MED_ID", nullable = false)

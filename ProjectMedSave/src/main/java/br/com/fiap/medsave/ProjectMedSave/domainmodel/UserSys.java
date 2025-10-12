@@ -31,7 +31,7 @@ public class UserSys {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "POS_USER_ID", nullable = false)
-    private @Getter @Setter PositionUser position;
+    private @Getter @Setter RoleUser role;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "CONTACT_USER_ID", nullable = false, unique = true)
