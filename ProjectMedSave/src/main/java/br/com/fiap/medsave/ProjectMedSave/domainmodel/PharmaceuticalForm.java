@@ -19,7 +19,7 @@ public class PharmaceuticalForm {
     @Column(name = "PHARM_FORM_ID")
     private @Getter @Setter Long id;
 
-    @Column(name = "NAME_PHARM_FORM", nullable = false, length = 100)
+    @Column(name = "PHARMA_FORM", nullable = false, length = 100)
     private @Getter @Setter String namePharmForm;
 
     @OneToMany(mappedBy = "pharmaceuticalForm", fetch = FetchType.LAZY,

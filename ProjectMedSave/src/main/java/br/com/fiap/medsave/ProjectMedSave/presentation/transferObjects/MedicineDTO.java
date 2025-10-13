@@ -1,6 +1,7 @@
 package br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects;
 
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import java.util.Set;
 @Builder
 public class MedicineDTO {
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     @NotBlank
@@ -67,7 +69,6 @@ public class MedicineDTO {
         if (d == null) return null;
 
         Medicine m = new Medicine();
-        m.setId(d.getId());
         m.setNameMedication(d.getNameMedication());
         m.setStatusMed(d.getStatusMed());
 

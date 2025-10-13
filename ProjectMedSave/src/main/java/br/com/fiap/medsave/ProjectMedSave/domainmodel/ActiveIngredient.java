@@ -17,7 +17,7 @@ public class ActiveIngredient {
     @Column(name = "ACT_INGRE_ID")
     private @Getter @Setter Long id;
 
-    @Column(name = "NAME_ACTIVE_INGRE", nullable = false, length = 255)
+    @Column(name = "ACT_INGREDIENT", nullable = false, length = 255)
     private @Getter @Setter String nameActiveIngre;
 
     @OneToMany(mappedBy = "activeIngredient", fetch = FetchType.LAZY,

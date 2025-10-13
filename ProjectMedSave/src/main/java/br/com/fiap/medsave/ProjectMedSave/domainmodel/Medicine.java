@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -25,14 +24,6 @@ public class Medicine {
     @Column(name = "STATUS_MED", nullable = false, length = 20)
     private @Getter @Setter String statusMed;
 
-    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, orphanRemoval = true)
-    private @Getter @Setter Set<MedicineActiveIngr> activeIngredients = new HashSet<>();
-
-    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, orphanRemoval = true)
-    private @Getter @Setter Set<MedicinePharmForm> pharmForms = new HashSet<>();
-
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "CATEGORY_MED_ID", nullable = false)
     private @Getter @Setter CategoryMedicine categoryMedicine;
@@ -43,6 +34,14 @@ public class Medicine {
 
     @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY)
     private @Getter @Setter Set<Stock> stocks = new HashSet<>();
+
+    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private @Getter @Setter Set<MedicineActiveIngr> activeIngredients = new HashSet<>();
+
+    @OneToMany(mappedBy = "medicine", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private @Getter @Setter Set<MedicinePharmForm> pharmForms = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
