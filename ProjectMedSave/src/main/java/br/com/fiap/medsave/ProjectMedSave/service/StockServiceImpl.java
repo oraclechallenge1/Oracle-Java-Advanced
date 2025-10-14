@@ -23,45 +23,42 @@ public class StockServiceImpl implements StockService {
     @Override
     @Transactional
     public void transferStock(TransferStockDTO dto) {
-        var medicine = medicineRepository.findById(dto.getMedicineId())
-                .orElseThrow(() -> new IllegalArgumentException("Medicine not found"));
-
-        var batch = batchRepository.findById(dto.getBatchId())
-                .orElseThrow(() -> new IllegalArgumentException("Batch not found"));
-
-        var srcLoc = locationRepository.findById(dto.getSourceLocationId())
-                .orElseThrow(() -> new IllegalArgumentException("Source location not found"));
-
-        var dstLoc = locationRepository.findById(dto.getDestinationLocationId())
-                .orElseThrow(() -> new IllegalArgumentException("Destination location not found"));
-
-        var sourceStock = stockRepository
-                .findByMedicine_IdAndBatch_IdAndLocation_Id(medicine.getId(), batch.getId(), srcLoc.getId())
-                .orElseThrow(() -> new IllegalArgumentException("Stock not found"));
-
-        if (sourceStock.getQuantity() < dto.getQuantity()) {
-            throw new IllegalArgumentException("Stock quantity less than or equal to medicine quantity");
+        if (dto.getSourceLocationId().equals(dto.getDestinationLocationId())) {
+            throw new IllegalArgumentException("Source and destination must be different.");
         }
 
-        sourceStock.setQuantity(sourceStock.getQuantity() - dto.getQuantity());
+        var medicine = medicineRepository.findById(dto.getMedicineId())
+                .orElseThrow(() -> new IllegalArgumentException("Medicine not found."));
+
+        var batch =  batchRepository.findById(dto.getBatchId())
+                .orElseThrow(() -> new IllegalArgumentException("Batch not found."));
+
+        var sourceLocation = locationRepository.findById(dto.getSourceLocationId())
+                .orElseThrow(() -> new IllegalArgumentException("Source location not found."));
+
+        var destinationLocation = locationRepository.findById(dto.getDestinationLocationId())
+                .orElseThrow(() -> new IllegalArgumentException("Destination location not found."));
+
+        var sourceStock = stockRepository
+                .findByMedicine_IdAndBatch_IdAndLocation_Id(medicine.getId(), batch.getId(), sourceLocation.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Stock not found."));
+
+        sourceStock.debit(dto.getQuantity());
         stockRepository.save(sourceStock);
 
-        stockRepository.findByMedicine_IdAndBatch_IdAndLocation_Id(
-                medicine.getId(), batch.getId(), srcLoc.getId()
-        ).ifPresentOrElse(
-                dest -> {
-                    dest.setQuantity(dest.getQuantity() +  dto.getQuantity());
-                            stockRepository.save(dest);
-                },
-                () -> {
-                    Stock stock = Stock.builder()
+        stockRepository.findByMedicine_IdAndBatch_IdAndLocation_Id(medicine.getId(), batch.getId(), destinationLocation.getId())
+                .ifPresentOrElse(dest -> {
+                    dest.credit(dto.getQuantity());
+                    stockRepository.save(dest);
+                }, () -> {
+                    var dest = Stock.builder()
                             .medicine(medicine)
                             .batch(batch)
-                            .location(dstLoc)
-                            .quantity(dto.getQuantity())
+                            .location(destinationLocation)
+                            .quantity(0)
                             .build();
-                    stockRepository.save(stock);
-                }
-        );
+                    dest.credit(dto.getQuantity());
+                    stockRepository.save(dest);
+                });
     }
 }
