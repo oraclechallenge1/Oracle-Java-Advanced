@@ -16,7 +16,7 @@ public class Batch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BATCH_ID_MEDICINE")
+    @Column(name = "BATCH_ID")
     private @Getter @Setter Long id;
 
     @Column(name = "BATCH_NUMBER", nullable = false, length = 255)

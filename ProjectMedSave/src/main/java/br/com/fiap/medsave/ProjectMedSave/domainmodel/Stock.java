@@ -24,7 +24,7 @@ public class Stock {
     private @Getter @Setter Medicine medicine;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "BATCH_ID_MEDICINE", nullable = false)
+    @JoinColumn(name = "BATCH_ID", nullable = false)
     private @Getter @Setter Batch batch;
 
     @ManyToOne(fetch = FetchType.EAGER)

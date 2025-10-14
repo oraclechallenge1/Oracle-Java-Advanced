@@ -18,10 +18,10 @@ public class LocationStock {
     @Column(name = "LOCATION_ID_STOCK")
     private @Getter @Setter Long id;
 
-    @Column(name = "LOCATION_STOCK_NAME", nullable = false, length = 30)
+    @Column(name = "NAME_LOCATION", nullable = false, length = 30)
     private @Getter @Setter String nameLocation;
 
-    @Column(name = "LOCATION_DESCRIPTION", nullable = false, length = 100)
+    @Column(name = "LOCATION_STOCK_NAME", nullable = false, length = 100)
     private @Getter @Setter String locationStock;
 
     @OneToOne(fetch = FetchType.EAGER)
