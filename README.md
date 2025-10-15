@@ -253,42 +253,48 @@ USERS_SYS "1" --> "many" MEDICINE_DISPENSE : performed by
 
 ---
 
-## 🚀 Como Executar Localmente
+# 🚀 Como Executar Localmente
 
-### **Pré-requisitos**
+## **Pré-requisitos**
 
-- [Java 21+](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html)  
-- [Maven 3.9+](https://maven.apache.org/download.cgi)  
+Antes de rodar o projeto, certifique-se de ter os seguintes softwares instalados:
 
-### **Instalação**
+- **[Java 21+](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html)**
+- **[Maven 3.9+](https://maven.apache.org/download.cgi)**
 
+---
 
-1. **Clonar o repositório**  
+## **Passos para Instalação e Execução**
+
+### 1. **Clonar o repositório**
+
 ```bash
 git clone https://github.com/oraclechallenge1/Oracle-Java-Advanced.git
 ```
 
-2. **Entrar na pasta do projeto**  
+### 2. **Acesse a pasta do projeto**
+
 ```bash
 cd ProjectMedSave
 ```
 
-3. **Compilar o projeto**  
+### 3. **Compile o projeto**
+
 ```bash
 mvn clean install
 ```
+### 4. **CExecute o projeto**
 
-### **Execução**
-
-**Executar a aplicação**  
 ```bash
 mvn spring-boot:run
 ```
 
 O projeto iniciará em:  
+
 👉 [http://localhost:8080](http://localhost:8080)
 
 A documentação Swagger estará disponível em:  
+
 👉 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ---
@@ -309,12 +315,16 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 
 ```bash
 {
-  "nameMedication": "string",
-  "statusMed": "string",
-  "activeIngredientId": 0,
-  "pharmFormId": 0,
-  "categoryMedicineId": 0,
-  "unitMeasureId": 0
+  "nameMedication": "test1",
+  "statusMed": "ativo",
+  "activeIngredientIds": [
+    1, 4
+  ],
+  "pharmFormIds": [
+    3
+  ],
+  "categoryMedicineId": 1,
+  "unitMeasureId": 1
 }
 ```
 
@@ -323,15 +333,15 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
 | GET    | `/api/v1/unit-measures`                    | Retorna todas as unidades de medida.                             | [Link](http://localhost:8080/api/v1/unit-measures)        |
-| GET    | `/api/v1/unit-measure/{id}`                | Retorna uma unidade de medida específica por ID.                 | [Link](http://localhost:8080/api/v1/unit-measure/{id})   |
+| GET    | `/api/v1/unit-measure/{id}`                | Retorna uma unidade de medida específica por ID.                 | [Link](http://localhost:8080/api/v1/unit-measure/{id})    |
 | POST   | `/api/v1/unit-measures`                    | Cadastra uma nova unidade de medida.                             | [Link](http://localhost:8080/api/v1/unit-measures)        |
 | DELETE | `/api/v1/unit-measures/{id}`               | Remove uma unidade de medida por ID.                             | [Link](http://localhost:8080/api/v1/unit-measures/{id})   |
-| PUT    | `/api/v1/unit-measure/{id}`                | Atualiza uma unidade de medida específica por ID                 | [Link](http://localhost:8080/api/v1/unit-measure/{id})   |
+| PUT    | `/api/v1/unit-measure/{id}`                | Atualiza uma unidade de medida específica por ID                 | [Link](http://localhost:8080/api/v1/unit-measure/{id})    |
 
 
 ```bash
 {
-  "unit": "string"
+  "unit": "test1"
 }
 ```
 
@@ -348,7 +358,7 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 
 ```bash
 {
-  "name": "string"
+  "name": "test1"
 }
 ```
 
@@ -365,11 +375,11 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 
 ```bash
 {
-  "name": "string"
+  "nameActiveIngre": "test1"
 }
 ```
 
-## CategoryMedicine ("/api/categories")
+## CategoryMedicine ("/api/v1/categories")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
@@ -382,7 +392,43 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 
 ```bash
 {
-  "categoryName": "string"
+  "categoryName": "test1"
 }
+```
+
+## Batch ("/api/v1/batches/receipts")
+
+| Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
+|--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
+| POST   | `/api/v1/batches/receipts`                 | Cria um LOTE.                                                    | [Link](http://localhost:8080/api/v1/batches/receipts)        |
+
+```bash
+{
+  "batchNumber": "LOTEtest",
+  "manufacturingDate": "2025-10-09",
+  "expirationDate": "2026-01-01",
+  "quantity": 800,
+  "medicineId": 2,
+  "locationId": 2,
+  "manufacturerId": 2
+}
+
+```
+
+## Batch ("/api/v1/batches/receipts")
+
+| Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
+|--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
+| POST   | `/api/v1/batches/receipts`                 | Cria um LOTE.                                                    | [Link](http://localhost:8080/api/v1/stock/transfer)        |
+
+```bash
+{
+  "medicineId": 2,
+  "batchId": 2,
+  "sourceLocationId": 2,
+  "destinationLocationId": 13,
+  "quantity": 5
+}
+
 ```
 
