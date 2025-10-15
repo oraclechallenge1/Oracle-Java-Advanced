@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/batches/receipts")
+@RequestMapping("/api/v1/batches/receipts")
 @Tag(name = "Batches", description = "Registrar um lote")
 public class BatchReceiptApiController {
 

@@ -1,6 +1,7 @@
 package br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects;
 
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.PharmaceuticalForm;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Builder
 public class PharmaceuticalFormDTO {
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     @NotBlank(message = "Nome da forma farmacêutica é obrigatório")

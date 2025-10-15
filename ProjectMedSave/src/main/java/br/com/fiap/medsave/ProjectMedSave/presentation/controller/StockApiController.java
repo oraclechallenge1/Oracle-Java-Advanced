@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/stock")
+@RequestMapping("/api/v1/stock")
 @Tag(name = "Stock", description = "Operações de estoque.")
 public class StockApiController {
 
