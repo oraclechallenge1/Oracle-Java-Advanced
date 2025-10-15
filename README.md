@@ -415,11 +415,11 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 
 ```
 
-## Batch ("/api/v1/batches/receipts")
+## Batch ("/api/v1/stock/transfer")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| POST   | `/api/v1/batches/receipts`                 | Cria um LOTE.                                                    | [Link](http://localhost:8080/api/v1/stock/transfer)        |
+| POST   | `/api/v1/stock/transfer`                   | Transfere de um estoque para outro.                              | [Link](http://localhost:8080/api/v1/stock/transfer)        |
 
 ```bash
 {
