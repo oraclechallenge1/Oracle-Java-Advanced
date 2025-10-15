@@ -251,19 +251,61 @@ USERS_SYS "1" --> "many" MEDICINE_DISPENSE : performed by
 - **Springdoc OpenAPI** (documentação Swagger UI)
 ---
 
+---
+
+## 🚀 Como Executar Localmente
+
+### **Pré-requisitos**
+
+- [Java 21+](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html)  
+- [Maven 3.9+](https://maven.apache.org/download.cgi)  
+
+### **Instalação**
+
+
+1. **Clonar o repositório**  
+```bash
+git clone https://github.com/oraclechallenge1/Oracle-Java-Advanced.git
+```
+
+2. **Entrar na pasta do projeto**  
+```bash
+cd ProjectMedSave
+```
+
+3. **Compilar o projeto**  
+```bash
+mvn clean install
+```
+
+### **Execução**
+
+**Executar a aplicação**  
+```bash
+mvn spring-boot:run
+```
+
+O projeto iniciará em:  
+👉 [http://localhost:8080](http://localhost:8080)
+
+A documentação Swagger estará disponível em:  
+👉 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+---
+
 ## 🌐 Mapeamento de Endpoints (API REST)
 
 Os microserviços de backend são acessados através da nossa API REST. Abaixo está o mapeamento dos principais *endpoints*.
 
-## Medicines ("/api/medicines")
+## Medicines ("/api/v1/medicines")
 
-| Método | Endpoint                                   | Funcionalidade                                                   |
-|--------|--------------------------------------------|------------------------------------------------------------------|
-| GET    | `/api/medicines`                           | Retorna todos os medicamentos.                                   |
-| GET    | `/api/medicines/{id}`                      | Retorna um medicamento específico por ID.                        |
-| POST   | `/api/medicines`                           | Cadastra um novo medicamento.                                    |
-| DELETE | `/api/medicines/{id}`                      | Remove um medicamento por ID.                                    |
-| PUT    | `/api/medicines/{id}`                      | Atualiza um medicamento específico por ID                        |
+| Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
+|--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
+| GET    | `/api/v1/medicines`                        | Retorna todos os medicamentos.                                   | [Link](http://localhost:8080/api/v1/medicines)        |
+| GET    | `/api/v1/medicines/{id}`                   | Retorna um medicamento específico por ID.                        | [Link](http://localhost:8080/api/v1/medicines/{id})   |
+| POST   | `/api/v1/medicines`                        | Cadastra um novo medicamento.                                    | [Link](http://localhost:8080/api/v1/medicines)        |
+| DELETE | `/api/v1/medicines/{id}`                   | Remove um medicamento por ID.                                    | [Link](http://localhost:8080/api/v1/medicines/{id})   |
+| PUT    | `/api/v1/medicines/{id}`                   | Atualiza um medicamento específico por ID                        | [Link](http://localhost:8080/api/v1/medicines/{id})   |
 
 ```bash
 {
@@ -276,15 +318,16 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 }
 ```
 
-## UnitMeasure ("/api/unit-measures")
+## UnitMeasure ("/api/v1/unit-measures")
 
-| Método | Endpoint                                   | Funcionalidade                                                   |
-|--------|--------------------------------------------|------------------------------------------------------------------|
-| GET    | `/api/unit-measures`                       | Retorna todas as unidades de medida.                             |
-| GET    | `/api/unit-measure/{id}`                   | Retorna uma unidade de medida específica por ID.                 |
-| POST   | `/api/unit-measures`                       | Cadastra uma nova unidade de medida.                             |
-| DELETE | `/api/unit-measures/{id}`                  | Remove uma unidade de medida por ID.                             |
-| PUT    | `/api/medicines/{id}`                      | Atualiza uma unidade de medida específica por ID                 |
+| Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
+|--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
+| GET    | `/api/v1/unit-measures`                    | Retorna todas as unidades de medida.                             | [Link](http://localhost:8080/api/v1/unit-measures)        |
+| GET    | `/api/v1/unit-measure/{id}`                | Retorna uma unidade de medida específica por ID.                 | [Link](http://localhost:8080/api/v1/unit-measure/{id})   |
+| POST   | `/api/v1/unit-measures`                    | Cadastra uma nova unidade de medida.                             | [Link](http://localhost:8080/api/v1/unit-measures)        |
+| DELETE | `/api/v1/unit-measures/{id}`               | Remove uma unidade de medida por ID.                             | [Link](http://localhost:8080/api/v1/unit-measures/{id})   |
+| PUT    | `/api/v1/unit-measure/{id}`                | Atualiza uma unidade de medida específica por ID                 | [Link](http://localhost:8080/api/v1/unit-measure/{id})   |
+
 
 ```bash
 {
@@ -292,15 +335,16 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 }
 ```
 
-## PharmaceuticalForm ("/api/pharmaceutical-forms")
+## PharmaceuticalForm ("/api/v1/pharmaceutical-forms")
 
-| Método | Endpoint                                   | Funcionalidade                                                   |
-|--------|--------------------------------------------|------------------------------------------------------------------|
-| GET    | `/api/pharmaceutical-forms`                | Retorna todas as formas farmaceuticas.                           |
-| GET    | `/api/pharmaceutical-forms/{id}`           | Retorna uma forma farmaceutica específica por ID.                |
-| POST   | `/api/pharmaceutical-forms`                | Cadastra uma nova forma farmaceutica.                            |
-| DELETE | `/api/pharmaceutical-forms/{id}`           | Remove uma forma farmaceutica por ID.                            |
-| PUT    | `/api/pharmaceutical-forms/{id}`           | Atualiza uma forma farmaceutica específica por ID                |
+| Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
+|--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
+| GET    | `/api/v1/pharmaceutical-forms`             | Retorna todas as formas farmacêuticas.                           | [Link](http://localhost:8080/api/v1/pharmaceutical-forms)        |
+| GET    | `/api/v1/pharmaceutical-forms/{id}`        | Retorna uma forma farmacêutica específica por ID.                | [Link](http://localhost:8080/api/v1/pharmaceutical-forms/{id})   |
+| POST   | `/api/v1/pharmaceutical-forms`             | Cadastra uma nova forma farmacêutica.                            | [Link](http://localhost:8080/api/v1/pharmaceutical-forms)        |
+| DELETE | `/api/v1/pharmaceutical-forms/{id}`        | Remove uma forma farmacêutica por ID.                            | [Link](http://localhost:8080/api/v1/pharmaceutical-forms/{id})   |
+| PUT    | `/api/v1/pharmaceutical-forms/{id}`        | Atualiza uma forma farmacêutica específica por ID                | [Link](http://localhost:8080/api/v1/pharmaceutical-forms/{id})   |
+
 
 ```bash
 {
@@ -308,15 +352,16 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 }
 ```
 
-## ActiveIngredient ("/api/active-ingredients")
+## ActiveIngredient ("/api/v1/active-ingredients")
 
-| Método | Endpoint                                   | Funcionalidade                                                   |
-|--------|--------------------------------------------|------------------------------------------------------------------|
-| GET    | `/api/active-ingredients`                  | Retorna todos os ingredientes ativos.                            |
-| GET    | `/api/active-ingredients/{id}`             | Retorna um ingrediente ativo específico por ID.                  |
-| POST   | `/api/active-ingredients`                  | Cadastra um novo ingrediente ativo.                              |
-| DELETE | `/api/medicines/{id}`                      | Remove um ingrediente ativo por ID.                              |
-| PUT    | `/api/medicines/{id}`                      | Atualiza um ingrediente ativo específico por ID                  |
+| Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
+|--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
+| GET    | `/api/v1/active-ingredients`               | Retorna todos os ingredientes ativos.                            | [Link](http://localhost:8080/api/v1/active-ingredients)        |
+| GET    | `/api/v1/active-ingredients/{id}`          | Retorna um ingrediente ativo específico por ID.                  | [Link](http://localhost:8080/api/v1/active-ingredients/{id})   |
+| POST   | `/api/v1/active-ingredients`               | Cadastra um novo ingrediente ativo.                              | [Link](http://localhost:8080/api/v1/active-ingredients)        |
+| DELETE | `/api/v1/active-ingredients/{id}`          | Remove um ingrediente ativo por ID.                              | [Link](http://localhost:8080/api/v1/active-ingredients/{id})   |
+| PUT    | `/api/v1/active-ingredients/{id}`          | Atualiza um ingrediente ativo específico por ID                  | [Link](http://localhost:8080/api/v1/active-ingredients/{id})   |
+
 
 ```bash
 {
@@ -326,13 +371,14 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 
 ## CategoryMedicine ("/api/categories")
 
-| Método | Endpoint                                   | Funcionalidade                                                   |
-|--------|--------------------------------------------|------------------------------------------------------------------|
-| GET    | `/api/categories`                          | Retorna todas as categorias.                                     |
-| GET    | `/api/categories/{id}`                     | Retorna uma categoria especifica por ID.                         |
-| POST   | `/api/categories`                          | Cadastra uma nova categoria.                                     |
-| DELETE | `/api/categories/{id}`                     | Remove uma categoria por ID.                                     |
-| PUT    | `/api/categories/{id}`                     | Atualiza uma categoria específica por ID                         |
+| Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
+|--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
+| GET    | `/api/v1/categories`                       | Retorna todas as categorias.                                     | [Link](http://localhost:8080/api/v1/categories)        |
+| GET    | `/api/v1/categories/{id}`                  | Retorna uma categoria específica por ID.                         | [Link](http://localhost:8080/api/v1/categories/{id})   |
+| POST   | `/api/v1/categories`                       | Cadastra uma nova categoria.                                     | [Link](http://localhost:8080/api/v1/categories)        |
+| DELETE | `/api/v1/categories/{id}`                  | Remove uma categoria por ID.                                     | [Link](http://localhost:8080/api/v1/categories/{id})   |
+| PUT    | `/api/v1/categories/{id}`                  | Atualiza uma categoria específica por ID                         | [Link](http://localhost:8080/api/v1/categories/{id})   |
+
 
 ```bash
 {
