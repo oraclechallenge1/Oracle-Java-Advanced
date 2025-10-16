@@ -303,6 +303,12 @@ A documentação Swagger estará disponível em:
 
 Os microserviços de backend são acessados através da nossa API REST. Abaixo está o mapeamento dos principais *endpoints*.
 
+Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
+
+[Requisições via Postman](https://pedrosena-442731.postman.co/workspace/Pedro-Sena's-Workspace~5c43f04d-7cf4-4e72-8e03-dea76dcaa5bb/collection/44355033-bd106e60-d82f-4d66-8015-839e5baae611?action=share&source=copy-link&creator=44355033)
+
+"Link" é a âncora para as URIs de cada endpoint.
+
 ## Medicines ("/api/v1/medicines")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
