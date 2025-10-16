@@ -283,7 +283,7 @@ cd ProjectMedSave
 ```bash
 mvn clean install
 ```
-### 4. **CExecute o projeto**
+### 4. **Execute o projeto**
 
 ```bash
 mvn spring-boot:run
