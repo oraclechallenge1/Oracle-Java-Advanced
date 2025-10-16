@@ -307,7 +307,7 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| GET    | `/api/v1/medicines`                        | Retorna todos os medicamentos.                                   | <a href="http://localhost:8080/api/v1/medicines" target="_blank">Link</a>|
+| GET    | `/api/v1/medicines`                        | Retorna todos os medicamentos.                                   | [Link](http://localhost:8080/api/v1/medicines)        |
 | GET    | `/api/v1/medicines/{id}`                   | Retorna um medicamento específico por ID.                        | [Link](http://localhost:8080/api/v1/medicines/{id})   |
 | POST   | `/api/v1/medicines`                        | Cadastra um novo medicamento.                                    | [Link](http://localhost:8080/api/v1/medicines)        |
 | DELETE | `/api/v1/medicines/{id}`                   | Remove um medicamento por ID.                                    | [Link](http://localhost:8080/api/v1/medicines/{id})   |
