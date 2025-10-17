@@ -305,7 +305,7 @@ Os microserviços de backend são acessados através da nossa API REST. Abaixo e
 
 Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 
-[Requisições via Postman](https://pedrosena-442731.postman.co/workspace/Pedro-Sena's-Workspace~5c43f04d-7cf4-4e72-8e03-dea76dcaa5bb/collection/44355033-bd106e60-d82f-4d66-8015-839e5baae611?action=share&source=copy-link&creator=44355033)
+[Requisições via Postman](https://app.getpostman.com/join-team?invite_code=b54dc6c601dbe3bc1a1cd125bb656e15c8e12a7812849b874f7c2bf10aade5ec&target_code=11d3e6fea06931e04da7dd3dd72efc89)
 
 "Link" é a âncora para as URIs de cada endpoint.
 
