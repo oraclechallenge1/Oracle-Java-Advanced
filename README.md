@@ -51,11 +51,11 @@ A MedSave adota uma arquitetura moderna e escalável, utilizando o melhor de cad
 
 ## 🎬 Pitch
 
-▶️ [**Assista ao nosso vídeo demonstrativo no YouTube**](linkDoVideoYt)
+▶️ [**Assista ao vídeo da nossa solução**]()
 
 ---
 
-## 📐 Modelagem de Dados
+##  Modelagem de Dados
 
 ### 🎨 Diagrama de Classes (UML - Mermaid)
 
