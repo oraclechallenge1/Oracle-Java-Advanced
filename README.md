@@ -51,7 +51,7 @@ A MedSave adota uma arquitetura moderna e escalável, utilizando o melhor de cad
 
 ## 🎬 Pitch
 
-▶️ [**Assista ao vídeo da nossa solução**]()
+▶️ [**Assista ao vídeo da nossa solução**](https://youtu.be/jCSo9ISv7RY)
 
 ---
 
