@@ -107,7 +107,17 @@ public class MedicineApiControllerTest {
         }
     }
 
-    // id inexistent
+    @Test
+    @DisplayName("Dado m ID inexistente, quando realizar a busca, retornar código 404.")
+    void should_return_404_when_medicine_not_found() throws Exception {
+        var id = 1L;
+
+        BDDMockito.given(medicineService.findById(id))
+                .willReturn(Optional.empty());
+
+        mockMvc.perform(get("/api/v1/medicines/{id}", id))
+                .andExpect(status().isNotFound());
+    }
 
     // post
     // removeById
