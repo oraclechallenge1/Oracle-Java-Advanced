@@ -1,6 +1,7 @@
 package br.com.fiap.medsave.ProjectMedSave.Controller;
 
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.Medicine;
+import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.MedicineDTO;
 import br.com.fiap.medsave.ProjectMedSave.service.MedicineService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -105,21 +107,44 @@ public class MedicineApiControllerTest {
                     .andExpect(jsonPath("$.id").value(id))
                     .andExpect(jsonPath("$.nameMedication").value("Dipirona"));
         }
-    }
 
-    @Test
-    @DisplayName("Dado m ID inexistente, quando realizar a busca, retornar código 404.")
-    void should_return_404_when_medicine_not_found() throws Exception {
-        var id = 1L;
+        @Test
+        @DisplayName("Dado m ID inexistente, quando realizar a busca, retornar código 404.")
+        void should_return_404_when_medicine_not_found() throws Exception {
+            var id = 1L;
 
-        BDDMockito.given(medicineService.findById(id))
-                .willReturn(Optional.empty());
+            BDDMockito.given(medicineService.findById(id))
+                    .willReturn(Optional.empty());
 
-        mockMvc.perform(get("/api/v1/medicines/{id}", id))
-                .andExpect(status().isNotFound());
+            mockMvc.perform(get("/api/v1/medicines/{id}", id))
+                    .andExpect(status().isNotFound());
+        }
     }
 
     // post
+    @Nested
+    @DisplayName("POST /api/v1/medicines")
+    class CreateMedicine {
+
+        void should_create_and_return_201() throws Exception {
+            List<Long> activeIngredientIds = Arrays.asList(1L, 2L);
+            List<Long> pharmFormsIds = Arrays.asList(1L, 2L);
+            var reg = MedicineDTO.toEntity(MedicineDTO.builder()
+                    .nameMedication("Teste")
+                    .statusMed("Ativo")
+                    .categoryMedicineId(2L)
+                    .activeIngredientIds(activeIngredientIds)
+                    .pharmFormIds(pharmFormsIds)
+                    .unitMeasureId(1L)
+                    .build()
+            );
+
+            /* var created = MedicineDTO.builder()
+                    .id(1L)
+                    .
+             */
+        }
+    }
     // removeById
     // putById
 
