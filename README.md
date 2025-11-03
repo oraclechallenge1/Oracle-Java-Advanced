@@ -248,10 +248,11 @@ MEDICINE_DISPENSE "1" --> "many" STOCK_MOVEMENT : related_to
 </div>
 
 ---
+## ✨ Tecnologias
+
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
 ![Maven](https://img.shields.io/badge/Maven-3.9-blue?style=for-the-badge&logo=apachemaven&logoColor=white)
-![FIAP](https://img.shields.io/badge/FIAP-ED145B?style=for-the-badge)
 
 - **Java 21**
 - **Spring Boot 3.5**
@@ -260,6 +261,7 @@ MEDICINE_DISPENSE "1" --> "many" STOCK_MOVEMENT : related_to
 - **Oracle DB** (banco de dados real/final)
 - **Maven** (gerenciador de dependências)
 - **Springdoc OpenAPI** (documentação Swagger UI)
+- **Docker** (microserviços)
 ---
 
 ---
@@ -448,4 +450,4 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 
 ```
-
+![FIAP](https://img.shields.io/badge/FIAP-ED145B?style=for-the-badge)
