@@ -313,29 +313,25 @@ A documentação Swagger estará disponível em:
 ---
 # 🚀 Como Executar o Docker
 
-### 1. **Clonar o repositório**
+### 1. **Dê um pull na imagem docker**
 
 ```bash
-git clone https://github.com/oraclechallenge1/Oracle-Java-Advanced.git
+docker pull devpedrosena1/project-med-save:1.0
 ```
 
-### 2. **Acesse a pasta do projeto**
-
-```bash
-cd ProjectMedSave
-```
-
-### 3. **Build o projeto**
-
-```bash
-docker build -t project-med-save:1.0
-```
-
-### 4. **Rode o container**
+### 2. **Rode o container**
 
 ```bash
 docker run -p 8080:8080 project-med-save:1.0
 ```
+
+O projeto iniciará em:  
+
+👉 [http://localhost:8080](http://localhost:8080)
+
+A documentação Swagger estará disponível em:  
+
+👉 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ---
 
