@@ -44,7 +44,7 @@ A MedSave adota uma arquitetura moderna e escalável, utilizando o melhor de cad
 ## 📅 Cronograma
 
 <div align="center">
-  <img src="images/cronograma.png" alt="Cronograma do Projeto MedSave" style="max-width: 90%; border: 1px solid #ddd; border-radius: 4px;">
+  <img src="images/CRONOGRAMA.png" alt="Cronograma do Projeto MedSave" style="max-width: 90%; border: 1px solid #ddd; border-radius: 4px;">
 </div>
 
 ---
