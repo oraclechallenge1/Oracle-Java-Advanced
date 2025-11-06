@@ -345,7 +345,7 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 
 "Link" é a âncora para as URIs de cada endpoint.
 
-## Medicines ("/api/v1/medicines")
+## Medicines ("/api/v2/medicines")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
@@ -370,7 +370,7 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## UnitMeasure ("/api/v1/unit-measures")
+## UnitMeasure ("/api/v2/unit-measures")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
@@ -387,7 +387,7 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## PharmaceuticalForm ("/api/v1/pharmaceutical-forms")
+## PharmaceuticalForm ("/api/v2/pharmaceutical-forms")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
@@ -404,7 +404,7 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## ActiveIngredient ("/api/v1/active-ingredients")
+## ActiveIngredient ("/api/v2/active-ingredients")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
@@ -421,7 +421,7 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## CategoryMedicine ("/api/v1/categories")
+## CategoryMedicine ("/api/v2/categories")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
@@ -438,7 +438,7 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## Batch ("/api/v1/batches/receipts")
+## Batch ("/api/v2/batches/receipts")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
@@ -457,7 +457,7 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 
 ```
 
-## Batch ("/api/v1/stock/transfer")
+## Batch ("/api/v2/stock/transfer")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
