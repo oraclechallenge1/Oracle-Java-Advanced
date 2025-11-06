@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/active-ingredients")
+@RequestMapping("/api/v2/active-ingredients")
 @Tag(name = "Active Ingredient", description = "Operações relacionadas a ingredientes ativos.")
 public class ActiveIngredientApiController {
 

@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/unit-measures")
+@RequestMapping("/api/v2/unit-measures")
 @Tag(name = "Unit Measure", description = "Operações relacionadas a unidade de medida")
 public class UnitMeasureApiController {
 

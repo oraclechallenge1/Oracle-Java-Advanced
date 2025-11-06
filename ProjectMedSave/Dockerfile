@@ -1,4 +1,4 @@
-FROM maven:3.8.4-jdk-8 AS build
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 COPY src /app/src
 COPY pom.xml /app

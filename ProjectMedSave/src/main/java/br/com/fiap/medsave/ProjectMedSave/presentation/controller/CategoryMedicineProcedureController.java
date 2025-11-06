@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/proc/category-medicine")
-@Tag(name = "Category Medicine Procedure", description = "Procedures of Category Medicine")
+@RequestMapping("/api/v2/proc/category-medicine")
+@Tag(name = "Category Medicine Procedure", description = "Procedures of Category Medicine - JUST TEST FOR DB")
 public class CategoryMedicineProcedureController {
 
     private final CategoryMedicineProcedureService categoryService;

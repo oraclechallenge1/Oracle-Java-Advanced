@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/pharmaceutical-forms")
+@RequestMapping("/api/v2/pharmaceutical-forms")
 @Tag(name = "Pharmaceutical Form", description = "Operações relacionadas a forma de medicamentos.")
 public class PharmaceuticalFormApiController {
 
