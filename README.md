@@ -316,13 +316,13 @@ A documentação Swagger estará disponível em:
 ### 1. **Dê um pull na imagem docker**
 
 ```bash
-docker pull devpedrosena1/project-med-save:1.0
+docker pull devpedrosena1/project-med-save:2.0
 ```
 
 ### 2. **Rode o container**
 
 ```bash
-docker run -p 8080:8080 project-med-save:1.0
+docker run -p 8080:8080 project-med-save:2.0
 ```
 
 O projeto iniciará em:  
