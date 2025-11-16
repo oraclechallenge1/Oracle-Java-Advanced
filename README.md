@@ -322,7 +322,7 @@ docker pull devpedrosena1/project-med-save:2.0
 ### 2. **Rode o container**
 
 ```bash
-docker run -p 8080:8080 project-med-save:2.0
+docker run -p 8080:8080 devpedrosena1/project-med-save:2.0
 ```
 
 O projeto iniciará em:  
