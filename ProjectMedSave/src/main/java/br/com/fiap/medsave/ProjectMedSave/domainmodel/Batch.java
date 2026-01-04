@@ -19,6 +19,15 @@ public class Batch {
     @Column(name = "BATCH_ID")
     private @Getter @Setter Long id;
 
+    /*
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "COD_ANVISA") -> preciso saber se será
+                                    id ou não
+    * private @Getter @Setter Long codAnvisa;
+    *
+    * */
+
     @Column(name = "BATCH_NUMBER", nullable = false, length = 255)
     private @Getter @Setter String batchNumber;
 
