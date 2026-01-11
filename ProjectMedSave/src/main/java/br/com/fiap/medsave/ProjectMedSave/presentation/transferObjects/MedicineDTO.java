@@ -29,6 +29,9 @@ public class MedicineDTO {
     @NotBlank @Size(max = 20)
     private String statusMed;
 
+    @NotBlank @Size(max = 30)
+    private String anvisaCode;
+
     @NotEmpty(message = "Pelo menos 1 princípio ativo é obrigatório")
     private List<Long> activeIngredientIds;
 
@@ -58,6 +61,7 @@ public class MedicineDTO {
                 .id(m.getId())
                 .nameMedication(m.getNameMedication())
                 .statusMed(m.getStatusMed())
+                .anvisaCode(m.getAnvisaCode())
                 .activeIngredientIds(actIds)
                 .pharmFormIds(formIds)
                 .categoryMedicineId(m.getCategoryMedicine() != null ? m.getCategoryMedicine().getId() : null)
@@ -71,6 +75,7 @@ public class MedicineDTO {
         Medicine m = new Medicine();
         m.setNameMedication(d.getNameMedication());
         m.setStatusMed(d.getStatusMed());
+        m.setAnvisaCode(d.getAnvisaCode());
 
         if (d.getCategoryMedicineId() != null)
             m.setCategoryMedicine(CategoryMedicine.builder().id(d.getCategoryMedicineId()).build());
@@ -78,7 +83,6 @@ public class MedicineDTO {
         if (d.getUnitMeasureId() != null)
             m.setUnitMeasure(UnitMeasure.builder().id(d.getUnitMeasureId()).build());
 
-        // montar as tabelas de junção
         Set<MedicineActiveIngr> actLinks = new HashSet<>();
         if (d.getActiveIngredientIds() != null) {
             for (Long actId : d.getActiveIngredientIds()) {

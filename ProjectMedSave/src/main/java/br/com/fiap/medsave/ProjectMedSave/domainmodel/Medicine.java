@@ -21,6 +21,9 @@ public class Medicine {
     @Column(name = "NAME_MEDICATION", nullable = false, length = 255)
     private @Getter @Setter String nameMedication;
 
+    @Column(name = "ANVISA_CODE", nullable = false, length = 30, unique = true)
+    private @Getter @Setter String anvisaCode;
+
     @Column(name = "STATUS_MED", nullable = false, length = 20)
     private @Getter @Setter String statusMed;
 

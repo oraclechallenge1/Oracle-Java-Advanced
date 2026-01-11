@@ -58,6 +58,7 @@ public class MedicineServiceImpl implements  MedicineService {
 
         current.setNameMedication(incoming.getNameMedication());
         current.setStatusMed(incoming.getStatusMed());
+        current.setAnvisaCode(incoming.getAnvisaCode());
         current.setCategoryMedicine(incoming.getCategoryMedicine());
         current.setUnitMeasure(incoming.getUnitMeasure());
 
