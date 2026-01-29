@@ -47,6 +47,10 @@ public class Batch {
     @OneToMany(mappedBy = "batch", fetch = FetchType.LAZY)
     private @Getter @Setter Set<Stock> stocks;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEDICINE_ID", nullable = false)
+    private @Getter @Setter Medicine medicine;
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

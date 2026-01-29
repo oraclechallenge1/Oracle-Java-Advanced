@@ -17,9 +17,6 @@ public class StockMovement {
     @Column(name = "STOCK_MOVEMENT_ID")
     private @Getter @Setter Long id;
 
-    @Column(name = "QUANTITY_DISPENSED", nullable = false)
-    private @Getter @Setter Integer quantityDispensed;
-
     @Column(name = "DATE_MOVEMENT", nullable = false)
     private @Getter @Setter LocalDate dateMovement;
 
@@ -50,8 +47,7 @@ public class StockMovement {
     }
     @Override public String toString(){
         return "StockMovement{" +
-                "id="+id+", " +
-                "qty="+quantityDispensed+
+                "id="+ id +
                 "}";
     }
 }

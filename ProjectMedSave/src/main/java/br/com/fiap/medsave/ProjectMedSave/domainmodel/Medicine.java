@@ -46,6 +46,9 @@ public class Medicine {
             cascade = CascadeType.ALL, orphanRemoval = true)
     private @Getter @Setter Set<MedicinePharmForm> pharmForms = new HashSet<>();
 
+    @OneToMany(mappedBy = "medicine")
+    private Set<Batch> batches;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

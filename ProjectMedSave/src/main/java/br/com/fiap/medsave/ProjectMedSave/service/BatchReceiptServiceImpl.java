@@ -37,6 +37,7 @@ public class BatchReceiptServiceImpl implements BatchReceiptService {
         batch.setExpirationDate(dto.getExpirationDate());
         batch.setCurrentQuantity(dto.getQuantity());
         batch.setManufacturer(manufacturer);
+        batch.setMedicine(medicine);
         batch = batchRepository.save(batch);
 
         Stock stock = new Stock();
