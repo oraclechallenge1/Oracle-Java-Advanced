@@ -25,15 +25,15 @@ public class UserSys {
     @Column(name = "LOGIN", unique = true, length = 50)
     private @Getter @Setter String login;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PROF_USER_ID", nullable = false)
     private @Getter @Setter ProfileUser profile;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "POS_USER_ID", nullable = false)
     private @Getter @Setter RoleUser role;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONTACT_USER_ID", nullable = false, unique = true)
     private @Getter @Setter ContactUser contactUser;
 

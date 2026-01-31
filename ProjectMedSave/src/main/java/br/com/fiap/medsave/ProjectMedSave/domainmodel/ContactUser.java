@@ -22,18 +22,17 @@ public class ContactUser {
     @Column(name = "PHONE_NUMBER_USER", unique = true, nullable = false, length = 11)
     private @Getter @Setter String phoneNumberUser;
 
-    @OneToOne(mappedBy = "contactUser", fetch = FetchType.LAZY)
-    private @Getter @Setter UserSys userSys;
-
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        ContactUser that = (ContactUser) o;
-        return Objects.equals(id, that.id);
+        if (this == o) return true;
+        if (!(o instanceof ContactUser)) return false;
+        return id != null && id.equals(((ContactUser) o).id);
     }
 
     @Override
-    public int hashCode() { return Objects.hashCode(id); }
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
     @Override
     public String toString() {
