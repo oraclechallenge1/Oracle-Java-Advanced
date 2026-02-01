@@ -1,14 +1,21 @@
 package br.com.fiap.medsave.ProjectMedSave.service;
 
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.UserSys;
+import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.ContactUserCreateDTO;
+import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.UserSysCreateDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UserSysService {
 
+
     // create
-    UserSys create(UserSys userSys);
+    UserSys create(
+            UserSysCreateDTO userDto,
+            ContactUserCreateDTO contactDto
+    );
+
     // get
     List<UserSys> findAll();
     // get id
