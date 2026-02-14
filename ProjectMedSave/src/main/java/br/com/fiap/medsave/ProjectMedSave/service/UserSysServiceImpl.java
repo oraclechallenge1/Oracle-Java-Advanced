@@ -24,7 +24,7 @@ import java.util.Optional;
 public class UserSysServiceImpl implements UserSysService {
 
     private final UserSysRepository userRepository;
-    private final ContactUserRepository contactRepository; // pode ficar, não quebra
+    private final ContactUserRepository contactRepository;
     private final RoleUserRepository roleRepository;
     private final ProfileUserRepository profileRepository;
 
