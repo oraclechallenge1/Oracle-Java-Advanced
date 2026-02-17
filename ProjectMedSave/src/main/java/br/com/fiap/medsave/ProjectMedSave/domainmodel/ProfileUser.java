@@ -1,5 +1,6 @@
 package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Objects;
@@ -21,6 +22,7 @@ public class ProfileUser {
     private @Getter @Setter String userProfile;
 
     @OneToMany(mappedBy = "profile", fetch = FetchType.LAZY)
+    @JsonIgnore
     private @Getter @Setter Set<UserSys> users;
 
     @Override

@@ -11,10 +11,7 @@ public interface UserSysService {
 
 
     // create
-    UserSys create(
-            UserSysCreateDTO userDto,
-            ContactUserCreateDTO contactDto
-    );
+    UserSys create(UserSysCreateDTO userDto);
 
     // get
     List<UserSys> findAll();

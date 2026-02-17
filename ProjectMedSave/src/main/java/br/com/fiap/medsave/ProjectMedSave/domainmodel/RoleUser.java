@@ -1,5 +1,6 @@
 package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Objects;
@@ -14,13 +15,14 @@ public class RoleUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "POS_USER_ID")
+    @Column(name = "ROLE_USER_ID")
     private @Getter @Setter Long id;
 
     @Column(name = "USER_ROLE", nullable = false, length = 100)
     private @Getter @Setter String userRole;
 
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    @JsonIgnore
     private @Getter @Setter Set<UserSys> users;
 
     @Override public boolean equals(Object o){

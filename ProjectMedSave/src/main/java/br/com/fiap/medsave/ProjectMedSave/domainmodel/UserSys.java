@@ -19,21 +19,21 @@ public class UserSys {
     @Column(name = "NAME_USER", nullable = false, length = 150)
     private @Getter @Setter String userName;
 
+    @Column(name = "LOGIN", unique = true, length = 50)
+    private @Getter @Setter String login;
+
     @Column(name = "PASSWORD_USER", length = 255)
     private @Getter @Setter String password;
 
-    @Column(name = "LOGIN", unique = true, length = 50)
-    private @Getter @Setter String login;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ROLE_USER_ID", nullable = false)
+    private @Getter @Setter RoleUser role;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PROF_USER_ID", nullable = false)
     private @Getter @Setter ProfileUser profile;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "POS_USER_ID", nullable = false)
-    private @Getter @Setter RoleUser role;
-
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CONTACT_USER_ID", nullable = false, unique = true)
     private @Getter @Setter ContactUser contactUser;
 

@@ -29,30 +29,27 @@ public class UserSysServiceImpl implements UserSysService {
     private final ProfileUserRepository profileRepository;
 
     @Override
-    public UserSys create(
-            UserSysCreateDTO userDto,
-            ContactUserCreateDTO contactDto
-    ) {
+    public UserSys create(UserSysCreateDTO dto) {
 
-        ProfileUser profile = profileRepository
-                .findById(userDto.getProfileUserId())
-                .orElseThrow(() -> new IllegalArgumentException("Perfil não encontrado"));
+        RoleUser role = roleRepository.findById(dto.getRoleUserId())
+                .orElseThrow(() -> new RuntimeException("Role não encontrada"));
 
-        RoleUser role = roleRepository
-                .findById(userDto.getRoleUserId())
-                .orElseThrow(() -> new IllegalArgumentException("Cargo não encontrado"));
+        ProfileUser profile = profileRepository.findById(dto.getProfileUserId())
+                .orElseThrow(() -> new RuntimeException("Profile não encontrado"));
 
-        ContactUser contact = new ContactUser();
-        contact.setEmailUser(contactDto.getEmailUser());
-        contact.setPhoneNumberUser(contactDto.getPhoneNumberUser());
+        ContactUser contact = ContactUser.builder()
+                .emailUser(dto.getEmailUser())
+                .phoneNumberUser(dto.getPhoneNumberUser())
+                .build();
 
-        UserSys user = new UserSys();
-        user.setUserName(userDto.getUserName());
-        user.setLogin(userDto.getLogin());
-        user.setPassword(userDto.getPassword());
-        user.setProfile(profile);
-        user.setRole(role);
-        user.setContactUser(contact);
+        UserSys user = UserSys.builder()
+                .userName(dto.getUserName())
+                .login(dto.getLogin())
+                .password(dto.getPassword())
+                .role(role)
+                .profile(profile)
+                .contactUser(contact)
+                .build();
 
         return userRepository.save(user);
     }
