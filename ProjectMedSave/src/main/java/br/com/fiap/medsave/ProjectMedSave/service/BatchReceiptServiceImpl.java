@@ -15,7 +15,7 @@ public class BatchReceiptServiceImpl implements BatchReceiptService {
     private final BatchRepository batchRepository;
     private final StockRepository stockRepository;
     private final MedicineRepository medicineRepository;
-    private final LocationRepository locationRepository;
+    private final HealthcareProviderRepository healthcareProviderRepository;
     private final ManufacturerRepository manufacturerRepository;
 
     @Transactional
@@ -25,7 +25,7 @@ public class BatchReceiptServiceImpl implements BatchReceiptService {
         Medicine medicine = medicineRepository.findById(dto.getMedicineId())
                 .orElseThrow(() -> new EntityNotFoundException("Medicine not found."));
 
-        LocationStock location = locationRepository.findById(dto.getLocationId())
+        HealthcareProvider healthcareProvider = healthcareProviderRepository.findById(dto.getLocationId())
                 .orElseThrow(() -> new EntityNotFoundException("Location not found."));
 
         Manufacturer manufacturer = manufacturerRepository.findById(dto.getManufacturerId())
@@ -43,7 +43,7 @@ public class BatchReceiptServiceImpl implements BatchReceiptService {
         Stock stock = new Stock();
         stock.setMedicine(medicine);
         stock.setBatch(batch);
-        stock.setLocation(location);
+        stock.setHealthcareProvider(healthcareProvider);
         stock.setQuantity(dto.getQuantity());
         stockRepository.save(stock);
 

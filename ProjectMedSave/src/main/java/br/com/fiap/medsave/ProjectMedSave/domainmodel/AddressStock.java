@@ -34,7 +34,7 @@ public class AddressStock {
     private @Getter @Setter Neighbourhood neighbourhood;
 
     @OneToOne(mappedBy = "addressStock", fetch = FetchType.LAZY)
-    private @Getter @Setter LocationStock location;
+    private @Getter @Setter HealthcareProvider healthcareProvider;
 
     @Override
     public boolean equals(Object o) {

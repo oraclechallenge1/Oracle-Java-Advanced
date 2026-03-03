@@ -2,7 +2,7 @@ package br.com.fiap.medsave.ProjectMedSave.service;
 
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.Stock;
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.BatchRepository;
-import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.LocationRepository;
+import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.HealthcareProviderRepository;
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.MedicineRepository;
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.StockRepository;
 import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.TransferStockDTO;
@@ -17,7 +17,7 @@ public class StockServiceImpl implements StockService {
     private final MedicineRepository  medicineRepository;
     private final StockRepository stockRepository;
     private final BatchRepository batchRepository;
-    private final LocationRepository locationRepository;
+    private final HealthcareProviderRepository locationRepository;
 
 
     @Override
@@ -40,13 +40,13 @@ public class StockServiceImpl implements StockService {
                 .orElseThrow(() -> new IllegalArgumentException("Destination location not found."));
 
         var sourceStock = stockRepository
-                .findByMedicine_IdAndBatch_IdAndLocation_Id(medicine.getId(), batch.getId(), sourceLocation.getId())
+                .findByMedicine_IdAndBatch_IdAndHealthcareProvider_Id(medicine.getId(), batch.getId(), sourceLocation.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Stock not found."));
 
         sourceStock.debit(dto.getQuantity());
         stockRepository.save(sourceStock);
 
-        stockRepository.findByMedicine_IdAndBatch_IdAndLocation_Id(medicine.getId(), batch.getId(), destinationLocation.getId())
+        stockRepository.findByMedicine_IdAndBatch_IdAndHealthcareProvider_Id(medicine.getId(), batch.getId(), destinationLocation.getId())
                 .ifPresentOrElse(dest -> {
                     dest.credit(dto.getQuantity());
                     stockRepository.save(dest);
@@ -54,7 +54,7 @@ public class StockServiceImpl implements StockService {
                     var dest = Stock.builder()
                             .medicine(medicine)
                             .batch(batch)
-                            .location(destinationLocation)
+                            .healthcareProvider(destinationLocation)
                             .quantity(0)
                             .build();
                     dest.credit(dto.getQuantity());

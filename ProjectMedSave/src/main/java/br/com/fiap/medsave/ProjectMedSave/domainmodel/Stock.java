@@ -31,8 +31,8 @@ public class Stock {
     private @Getter @Setter Batch batch;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "LOCATION_ID_STOCK", nullable = false)
-    private @Getter @Setter LocationStock location;
+    @JoinColumn(name = "HEALTHCARE_PROVIDER_ID", nullable = false) // location_id_stock -> healthcare_provider_id
+    private @Getter @Setter HealthcareProvider healthcareProvider;
 
     public void debit(int amount) {
         if (amount <= 0) {
@@ -64,8 +64,8 @@ public class Stock {
                             stock.medicine != null ? stock.medicine.getId() : null)
                 && Objects.equals(this.batch != null ? this.batch.getId() : null,
                             stock.batch != null ? stock.batch.getId() : null)
-                && Objects.equals(this.location != null ? this.location.getId() : null,
-                            stock.location != null ? stock.location.getId() : null);
+                && Objects.equals(this.healthcareProvider != null ? this.healthcareProvider.getId() : null,
+                            stock.healthcareProvider != null ? stock.healthcareProvider.getId() : null);
     }
 
     @PrePersist
