@@ -44,7 +44,7 @@ public class UserSysServiceImpl implements UserSysService {
 
         UserSys user = UserSys.builder()
                 .userName(dto.getUserName())
-                .login(dto.getLogin())
+                .email(dto.getEmail())
                 .password(dto.getPassword())
                 .role(role)
                 .profile(profile)

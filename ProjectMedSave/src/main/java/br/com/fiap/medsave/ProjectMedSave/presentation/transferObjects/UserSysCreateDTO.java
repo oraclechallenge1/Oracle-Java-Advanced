@@ -13,7 +13,7 @@ public class UserSysCreateDTO {
     private String userName;
 
     @NotBlank(message = "Login é obrigatório")
-    private String login;
+    private String email;
 
     @NotBlank(message = "Senha é obrigatória")
     private String password;

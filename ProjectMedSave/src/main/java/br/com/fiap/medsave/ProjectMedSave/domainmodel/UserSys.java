@@ -2,6 +2,11 @@ package br.com.fiap.medsave.ProjectMedSave.domainmodel;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -9,7 +14,7 @@ import java.util.Objects;
 @Builder
 @Entity
 @Table(name = "USERS_SYS")
-public class UserSys {
+public class UserSys implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +22,18 @@ public class UserSys {
     private @Getter @Setter Long id;
 
     @Column(name = "NAME_USER", nullable = false, length = 150)
-    private @Getter @Setter String userName;
+    private String userName;
 
-    @Column(name = "LOGIN", unique = true, length = 50)
-    private @Getter @Setter String login;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    } // com a adiçao do userdetails, o lombok nao gerou os getters e setters de userName, entao tive que criar manualmente
+
+    @Column(name = "EMAIL", unique = true, length = 50)
+    private @Getter @Setter String email;
 
     @Column(name = "PASSWORD_USER", length = 255)
     private @Getter @Setter String password;
@@ -52,7 +65,37 @@ public class UserSys {
         return "UserSys{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
-                ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getUsername() {
+        return "";
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

@@ -67,7 +67,7 @@ public class UserSysApiController {
         UserSysResponseDTO dto = new UserSysResponseDTO();
         dto.setId(user.getId());
         dto.setUserName(user.getUserName());
-        dto.setLogin(user.getLogin());
+        dto.setEmail(user.getEmail());
         dto.setEmail(user.getContactUser().getEmailUser());
         dto.setPhone(user.getContactUser().getPhoneNumberUser());
         dto.setProfileName(user.getProfile().getUserProfile());
