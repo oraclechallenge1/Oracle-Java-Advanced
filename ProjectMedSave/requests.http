@@ -6,10 +6,20 @@ POST http://localhost:8080/auth/register
 Content-Type: application/json
 
 {
-  "name": "Pedro",
-  "email": "pedro@email.com",
+  "name": "Matheus",
+  "email": "matheus@gmail.com",
   "password": "123456",
-  "phone": "11999999999",
+  "phone": "987654321",
   "roleId": 1,
   "profileId": 1
+}
+
+###
+
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+    "email": "matheus@gmail.com",
+    "password": "123456"
 }
