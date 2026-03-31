@@ -11,19 +11,20 @@ import org.springframework.jms.connection.CachingConnectionFactory;
 @Configuration
 public class EmbeddedActiveMQConfig {
 
+    @Bean
     public BrokerService brokerService() throws Exception {
         BrokerService broker = new BrokerService();
         broker.setBrokerName("embedded-broker");
         broker.setPersistent(false);
         broker.setUseJmx(false);
-        broker.addConnector("vm://embedded-broker"); // isso é um processo local, é aqui onde colocarei o ip do serviço na azure
+        broker.addConnector("vm://embedded-broker");
         broker.start();
         return broker;
     }
 
     @Bean
     public ConnectionFactory activeMQConnectionFactory() {
-        ActiveMQConnectionFactory amq = new ActiveMQConnectionFactory("vm://embedded-broker"); // mesma coisa de cima
+        ActiveMQConnectionFactory amq = new ActiveMQConnectionFactory("vm://embedded-broker");
         return new CachingConnectionFactory(amq);
     }
 

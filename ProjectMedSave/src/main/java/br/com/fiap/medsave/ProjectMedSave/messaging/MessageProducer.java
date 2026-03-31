@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Component
 @RestController
-@RequestMapping("/api/v1/messages")
+@RequestMapping("/api/v3/messages")
 @Tag(name = "MessageProducer", description = "Endpoints para enviar mensagens para filas e tópicos")
 public class MessageProducer implements CommandLineRunner {
 
