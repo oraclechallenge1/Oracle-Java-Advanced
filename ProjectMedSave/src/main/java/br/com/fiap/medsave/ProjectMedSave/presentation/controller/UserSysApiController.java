@@ -15,13 +15,12 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v2/user")
+@RequestMapping("/api/v3/user")
 @Tag(name = "UserSys", description = "Operações de usuário do sistema")
 public class UserSysApiController {
 
     private final UserSysService userSysService;
 
-    // create
     @PostMapping
     public ResponseEntity<UserSysResponseDTO> create (
             @RequestBody @Valid UserSysCreateDTO request
@@ -29,7 +28,6 @@ public class UserSysApiController {
         return ResponseEntity.ok(toDTO(userSysService.create(request)));
     }
 
-    // findall
     @GetMapping
     public ResponseEntity<List<UserSysResponseDTO>> findAll() {
 
@@ -41,7 +39,6 @@ public class UserSysApiController {
         return ResponseEntity.ok(list);
     }
 
-    // find by id
     @GetMapping("/{id}")
     public ResponseEntity<UserSysResponseDTO> findById(@PathVariable Long id) {
         return userSysService.findById(id)
@@ -49,7 +46,6 @@ public class UserSysApiController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // delete
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         Optional<UserSys> userOpt = userSysService.findById(id);

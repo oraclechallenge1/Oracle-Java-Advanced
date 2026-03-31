@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v2/proc/active-ingredient")
+@RequestMapping("/api/v3/proc/active-ingredient")
 @Tag(name = "Active Ingredient Procedure", description = "Procedures of Active Ingredient - JUST TEST FOR DB")
 public class ActiveIngredientProcedureController {
 
