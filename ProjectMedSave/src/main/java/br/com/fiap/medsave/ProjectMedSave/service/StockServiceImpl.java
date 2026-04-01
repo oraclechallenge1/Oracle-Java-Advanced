@@ -5,10 +5,14 @@ import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.BatchReposito
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.HealthcareProviderRepository;
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.MedicineRepository;
 import br.com.fiap.medsave.ProjectMedSave.domainmodel.repositories.StockRepository;
+import br.com.fiap.medsave.ProjectMedSave.messaging.StockTransferProducer;
+import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.StockTransferredEvent;
 import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.TransferStockDTO;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +22,7 @@ public class StockServiceImpl implements StockService {
     private final StockRepository stockRepository;
     private final BatchRepository batchRepository;
     private final HealthcareProviderRepository locationRepository;
+    private final StockTransferProducer stockTransferProducer;
 
 
     @Override
@@ -60,5 +65,21 @@ public class StockServiceImpl implements StockService {
                     dest.credit(dto.getQuantity());
                     stockRepository.save(dest);
                 });
+
+        StockTransferredEvent event = new StockTransferredEvent(
+                medicine.getId(),
+                medicine.getNameMedication(),
+                batch.getId(),
+                batch.getBatchNumber(),
+                sourceLocation.getId(),
+                sourceLocation.getProviderName(),
+                destinationLocation.getId(),
+                destinationLocation.getProviderName(),
+                dto.getQuantity(),
+                LocalDateTime.now()
+        );
+
+        stockTransferProducer.sendToQueue(event);
+        stockTransferProducer.sendToTopic(event);
     }
 }
