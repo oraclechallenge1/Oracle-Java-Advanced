@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 
 @Configuration
 public class EmbeddedActiveMQConfig {
@@ -28,23 +30,45 @@ public class EmbeddedActiveMQConfig {
         return new CachingConnectionFactory(amq);
     }
 
-    @Bean
-    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(ConnectionFactory fac) {
+    @Bean(name = "jmsListenerContainerFactory")
+    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
+            ConnectionFactory connectionFactory,
+            MappingJackson2MessageConverter converter) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        factory.setConnectionFactory(fac);
+        factory.setConnectionFactory(connectionFactory);
+        factory.setMessageConverter(converter);
         factory.setPubSubDomain(false);
-        factory.setConcurrency("1-3");
+        return factory;
+    }
+
+    @Bean(name = "topicListenerContainerFactory")
+    public DefaultJmsListenerContainerFactory topicListenerContainerFactory(
+            ConnectionFactory connectionFactory,
+            MappingJackson2MessageConverter converter) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setMessageConverter(converter);
+        factory.setPubSubDomain(true);
         return factory;
     }
 
     @Bean
-    public DefaultJmsListenerContainerFactory topicListenerContainerFactory(ConnectionFactory fac) {
-        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        factory.setConnectionFactory(fac);
-        factory.setPubSubDomain(true);
-        factory.setConcurrency("1-3");
-        factory.setSubscriptionDurable(false); // conexao com banco, nao ter que configurar por enquanto
-        return factory;
+    public JmsTemplate queueJmsTemplate(
+            ConnectionFactory connectionFactory,
+            MappingJackson2MessageConverter converter) {
+        JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory);
+        jmsTemplate.setPubSubDomain(false);
+        jmsTemplate.setMessageConverter(converter);
+        return jmsTemplate;
     }
 
+    @Bean
+    public JmsTemplate topicJmsTemplate(
+            ConnectionFactory connectionFactory,
+            MappingJackson2MessageConverter converter) {
+        JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory);
+        jmsTemplate.setPubSubDomain(true);
+        jmsTemplate.setMessageConverter(converter);
+        return jmsTemplate;
+    }
 }

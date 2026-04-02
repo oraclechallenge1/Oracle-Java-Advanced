@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class StockTransferProducer {
 
-    private final JmsTemplate topicJmsTemplate;
     private final JmsTemplate queueJmsTemplate;
+    private final JmsTemplate topicJmsTemplate;
 
     public StockTransferProducer(
-            @Qualifier("queueJmsTemplate") JmsTemplate topicJmsTemplate,
-            @Qualifier("topicJmsTemplate") JmsTemplate queueJmsTemplate) {
-        this.topicJmsTemplate = topicJmsTemplate;
+            @Qualifier("queueJmsTemplate") JmsTemplate queueJmsTemplate,
+            @Qualifier("topicJmsTemplate") JmsTemplate topicJmsTemplate) {
         this.queueJmsTemplate = queueJmsTemplate;
+        this.topicJmsTemplate = topicJmsTemplate;
     }
 
     public void sendToQueue(StockTransferredEvent event) {
@@ -23,7 +23,6 @@ public class StockTransferProducer {
     }
 
     public void sendToTopic(StockTransferredEvent event) {
-        queueJmsTemplate.convertAndSend("stock.transfer.topic", event);
+        topicJmsTemplate.convertAndSend("stock.transfer.topic", event);
     }
-
 }

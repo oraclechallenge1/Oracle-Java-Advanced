@@ -1,13 +1,14 @@
 package br.com.fiap.medsave.ProjectMedSave.messaging;
 
+import br.com.fiap.medsave.ProjectMedSave.presentation.transferObjects.StockTransferredEvent;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class QueueConsumer {
 
-    @JmsListener(destination = "demo.queue", containerFactory = "jmsListenerContainerFactory")
-    public void onQueueMessage(String body) {
-        System.out.println("{QUEUE} Received message: " + body);
+    @JmsListener(destination = "stock.transfer.queue", containerFactory = "jmsListenerContainerFactory")
+    public void onQueueMessage(StockTransferredEvent event) {
+        System.out.println("QUEUE recebeu: " + event.getMedicineName());
     }
 }

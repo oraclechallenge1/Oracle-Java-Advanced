@@ -40,8 +40,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                         .requestMatchers(HttpMethod.POST,
-                                "/auth/login",
-                                "/auth/register"
+                                "/api/v3/auth/login",
+                                "/api/v3/auth/register"
                         ).permitAll()
                         .requestMatchers(
                                 "/v3/api-docs/**",

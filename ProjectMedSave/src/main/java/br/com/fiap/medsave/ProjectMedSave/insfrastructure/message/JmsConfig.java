@@ -1,13 +1,17 @@
-package br.com.fiap.medsave.ProjectMedSave.insfrastructure.message;
+package br.com.fiap.medsave.ProjectMedSave.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.jms.ConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.support.converter.MessageType;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
+import org.springframework.jms.support.converter.MessageType;
 
 @Configuration
+@EnableJms
 public class JmsConfig {
 
     @Bean
@@ -15,23 +19,11 @@ public class JmsConfig {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setTargetType(MessageType.TEXT);
         converter.setTypeIdPropertyName("_type");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+
+        converter.setObjectMapper(objectMapper);
         return converter;
     }
-
-    @Bean
-    public JmsTemplate queueJmsTemplate(ConnectionFactory cf, MappingJackson2MessageConverter converter) {
-        JmsTemplate template = new JmsTemplate(cf);
-        template.setPubSubDomain(false);
-        template.setMessageConverter(converter);
-        return template;
-    }
-
-    @Bean
-    public JmsTemplate topicJmsTemplate(ConnectionFactory cf, MappingJackson2MessageConverter converter) {
-        JmsTemplate template = new JmsTemplate(cf);
-        template.setPubSubDomain(true);
-        template.setMessageConverter(converter);
-        return template;
-    }
-
 }
