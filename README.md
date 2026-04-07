@@ -41,14 +41,6 @@ A MedSave adota uma arquitetura moderna e escalável, utilizando o melhor de cad
 
 ---
 
-## 📅 Cronograma
-
-<div align="center">
-  <img src="images/CRONOGRAMA.png" alt="Cronograma do Projeto MedSave" style="max-width: 90%; border: 1px solid #ddd; border-radius: 4px;">
-</div>
-
----
-
 ## 🎬 Pitch
 
 ▶️ [**Assista ao vídeo da nossa solução**](https://youtu.be/jCSo9ISv7RY)
@@ -261,7 +253,8 @@ MEDICINE_DISPENSE "1" --> "many" STOCK_MOVEMENT : related_to
 - **Oracle DB** (banco de dados real/final)
 - **Maven** (gerenciador de dependências)
 - **Springdoc OpenAPI** (documentação Swagger UI)
-- **Docker** (microserviços)
+- **Docker** (containers)
+- **ActiveMQ** (microserviços
 ---
 
 ---
@@ -316,13 +309,13 @@ A documentação Swagger estará disponível em:
 ### 1. **Dê um pull na imagem docker**
 
 ```bash
-docker pull devpedrosena1/project-med-save:2.0
+docker pull devpedrosena1/project-med-save:3.0
 ```
 
 ### 2. **Rode o container**
 
 ```bash
-docker run -p 8080:8080 devpedrosena1/project-med-save:2.0
+docker run -p 8080:8080 devpedrosena1/project-med-save:3.0
 ```
 
 O projeto iniciará em:  
