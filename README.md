@@ -255,7 +255,7 @@ MEDICINE_DISPENSE "1" --> "many" STOCK_MOVEMENT : related_to
 - **Springdoc OpenAPI** (documentação Swagger UI)
 - **Spring Security** (segurança)
 - **Docker** (containers)
-- **ActiveMQ** (microserviços
+- **ActiveMQ** (microserviços)
 ---
 
 ---
