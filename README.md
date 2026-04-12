@@ -50,7 +50,7 @@ A MedSave adota uma arquitetura moderna e escalável, utilizando o melhor de cad
 
 ## 🎬 VIDEO SPRINT 3
 
-▶️ [**Assista ao vídeo da nossa API**]([https://youtu.be/jCSo9ISv7RY](https://www.youtube.com/watch?v=e75tdDZstnI))
+▶️ [**Assista ao vídeo da nossa API**](https://www.youtube.com/watch?v=e75tdDZstnI)
 
 ---
 
@@ -242,7 +242,7 @@ MEDICINE_DISPENSE "1" --> "many" STOCK_MOVEMENT : related_to
 
 ###  NOSSO WEBAPP
 
-[**WEBAPP**]([[https://youtu.be/jCSo9ISv7RY](https://www.youtube.com/watch?v=e75tdDZstnI](http://webapp-java-medsave-rm560485.azurewebsites.net/swagger-ui/index.html)))
+[**NOSSO WEBAPP**](http://webapp-java-medsave-rm560485.azurewebsites.net/swagger-ui/index.html)
 ---
 
 ---
