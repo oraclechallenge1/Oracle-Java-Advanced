@@ -238,12 +238,6 @@ MEDICINE_DISPENSE "1" --> "many" STOCK_MOVEMENT : related_to
 
 ```
 
----
-
-###  NOSSO WEBAPP
-
-[**NOSSO WEBAPP**](http://webapp-java-medsave-rm560485.azurewebsites.net/swagger-ui/index.html)
----
 
 ---
 
@@ -342,6 +336,14 @@ A documentação Swagger estará disponível em:
 👉 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ---
+
+---
+
+###  NOSSO WEBAPP
+
+[**NOSSO WEBAPP**](http://webapp-java-medsave-rm560485.azurewebsites.net/swagger-ui/index.html)
+---
+
 
 ## 🌐 Mapeamento de Endpoints (API REST)
 
