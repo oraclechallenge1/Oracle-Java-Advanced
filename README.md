@@ -365,12 +365,12 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 
 ```bash
 {
-  "name": Orlando,
-  "email": prof@fiap.com.br,
+  "name": "Orlando",
+  "email": "prof@fiap.com.br",
   "password": "12345678",
-  "phone": 1190909878,
+  "phone": "1190909878",
   "roleId": 1,
-  "profileId: 1"
+  "profileId": 1
 }
 ```
 
