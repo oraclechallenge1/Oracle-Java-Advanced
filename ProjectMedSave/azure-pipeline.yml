@@ -1,3 +1,5 @@
+## Arquivo de pipeline do Azure DevOps para sincronizar o repositório do Azure com o GitHub
+
 trigger:
   - main
 
