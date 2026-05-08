@@ -1,0 +1,21 @@
+trigger:
+  - main
+
+variables:
+  - group: github-sync
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+    persistCredentials: true
+
+  - script: |
+      git config --global user.email "azuredevops@local"
+      git config --global user.name "Azure DevOps"
+      
+      git remote add github https://$(GITHUB_USER):$(GITHUB_TOKEN)@github.com/oraclechallenge1/Oracle-Java-Advanced.git
+      
+      git push github HEAD:main
+    displayName: 'Sync Azure Repo para GitHub'
