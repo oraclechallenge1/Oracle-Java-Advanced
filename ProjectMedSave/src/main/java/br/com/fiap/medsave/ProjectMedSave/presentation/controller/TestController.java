@@ -10,7 +10,7 @@ public class TestController {
 
     @GetMapping
     public String test() {
-        return "Testando segurança";
+        return "Testando segurança e pipeline de desenvolvimento";
     }
 
 }
