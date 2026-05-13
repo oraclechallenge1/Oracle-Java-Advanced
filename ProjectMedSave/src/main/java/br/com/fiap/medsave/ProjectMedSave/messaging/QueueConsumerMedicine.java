@@ -5,7 +5,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class QueueConsumer {
+public class QueueConsumerMedicine {
 
     @JmsListener(destination = "stock.transfer.queue", containerFactory = "jmsListenerContainerFactory")
     public void onQueueMessage(StockTransferredEvent event) {

@@ -2,10 +2,7 @@ package br.com.fiap.medsave.ProjectMedSave.messaging;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v3/messages")
 @Tag(name = "MessageProducer", description = "Endpoints para enviar mensagens para filas e tópicos")
-public class MessageProducer {
+public class MessageTest {
 
 //    private final JmsTemplate queueJmsTemplate;
 //    private final JmsTemplate topicJmsTemplate;
