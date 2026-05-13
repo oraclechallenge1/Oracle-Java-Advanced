@@ -5,10 +5,11 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TopicConsumerB {
+public class StockTransferNotificationConsumer {
 
     @JmsListener(destination = "stock.transfer.topic", containerFactory = "topicListenerContainerFactory")
-    public void onTopicMessageB(StockTransferredEvent event) {
-        System.out.println("TOPIC B recebeu: " + event.getMedicineName());
+    public void handleStockTransferNotification(StockTransferredEvent event) {
+        System.out.println("Notificando transferência de: " + event.getMedicineName());
     }
+
 }
