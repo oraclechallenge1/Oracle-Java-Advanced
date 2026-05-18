@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v3/user")
+@RequestMapping("/api/v4/user")
 @Tag(name = "UserSys", description = "Operações de usuário do sistema")
 public class UserSysApiController {
 

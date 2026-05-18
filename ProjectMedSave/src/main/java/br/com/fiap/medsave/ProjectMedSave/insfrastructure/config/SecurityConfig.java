@@ -40,11 +40,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                         .requestMatchers(HttpMethod.POST,
-                                "/api/v3/auth/login",
-                                "/api/v3/auth/register"
+                                "/api/v4/auth/login",
+                                "/api/v4/auth/register"
                         ).permitAll()
                         .requestMatchers(
-                                "/v3/api-docs/**",
+                                "/v4/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/console/**"

@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v3/auth")
+@RequestMapping("/api/v4/auth")
 public class AuthController {
 
     private final UserSysRepository userSysRepository;

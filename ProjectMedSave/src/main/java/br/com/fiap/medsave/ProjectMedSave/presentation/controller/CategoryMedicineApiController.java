@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v3/categories")
+@RequestMapping("/api/v4/categories")
 @Tag(name = "Category Medicine", description = "Operações relacionadas a categorias de medicamentos")
 public class CategoryMedicineApiController {
 

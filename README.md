@@ -27,7 +27,7 @@ A MedSave adota uma arquitetura moderna e escalável, utilizando o melhor de cad
 * **Backend & Microserviços:** **Java** e **C#**
 * **Mobile:** **React Native**
 * **Banco de Dados:** **Oracle DB**
-* **Cloud:** **Oracle Cloud Infrastructure**
+* **Cloud:** **Azure**
 
 ---
 
@@ -48,9 +48,9 @@ A MedSave adota uma arquitetura moderna e escalável, utilizando o melhor de cad
 ---
 ---
 
-## 🎬 VIDEO SPRINT 3
+## 🎬 VIDEO SPRINT 4
 
-▶️ [**Assista ao vídeo da nossa API**](https://www.youtube.com/watch?v=e75tdDZstnI)
+▶️ [**Assista ao vídeo técnico explicativo**](https://www.youtube.com/watch?v=e75tdDZstnI)
 
 ---
 
@@ -131,13 +131,13 @@ A documentação Swagger estará disponível em:
 ### 1. **Dê um pull na imagem docker**
 
 ```bash
-docker pull devpedrosena1/project-med-save:3.0
+docker pull devpedrosena1/project-med-save:4.0
 ```
 
 ### 2. **Rode o container**
 
 ```bash
-docker run -p 8080:8080 devpedrosena1/project-med-save:3.0
+docker run -p 8080:8080 devpedrosena1/project-med-save:4.0
 ```
 
 O projeto iniciará em:  
@@ -160,21 +160,17 @@ A documentação Swagger estará disponível em:
 
 ## 🌐 Mapeamento de Endpoints (API REST)
 
-Os microserviços de backend são acessados através da nossa API REST. Abaixo está o mapeamento dos principais *endpoints*.
-
-Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
-
-[Requisições via Postman](https://www.postman.com/pedrosena-442731/workspace/pedro-sena-s-workspace/collection/44355033-bd106e60-d82f-4d66-8015-839e5baae611?action=share&source=copy-link&creator=44355033)
+Os serviços de backend são acessados através da nossa API REST. Abaixo está o mapeamento dos principais *endpoints*.
 
 "Link" é a âncora para as URIs de cada endpoint.
 
 - Em nosso projeto, é obrigatório que o usuário esteja autenticado. Como funciona essa autenticação? É bem simples, o usuário deve se registrar em nosso app com informações básicas, e depois efetuar o login. Ao efeturar login, o usuário receberá um token único com expiração de 24h, e esse token será responsável por permitir que o usuário acesse todas as requisições do sistema. Caso o usuário já tenha um usuário cadastrado, basta efeturar login.
 
-## User ("/api/v3/auth/register")
+## User ("/api/v4/auth/register")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| POST   | `/api/v3/auth/register`                   | Registra um usuário                              | [Link](http://localhost:8080/api/v3/auth/register)          |
+| POST   | `/api/v4/auth/register`                   | Registra um usuário                              | [Link](http://localhost:8080/api/v4/auth/register)          |
 
 ```bash
 {
@@ -187,11 +183,11 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## User ("/api/v3/auth/login")
+## User ("/api/v4/auth/login")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| POST   | `/api/v3/auth/login`                   | Realiza login de um usuário                              | [Link](http://localhost:8080/api/v3/auth/login)          |
+| POST   | `/api/v4/auth/login`                   | Realiza login de um usuário                              | [Link](http://localhost:8080/api/v4/auth/login)          |
 
 ```bash
 {
@@ -200,15 +196,15 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## Medicines ("/api/v3/medicines")
+## Medicines ("/api/v4/medicines")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| GET    | `/api/v3/medicines`                        | Retorna todos os medicamentos.                                   | [Link](http://localhost:8080/api/v3/medicines)        |
-| GET    | `/api/v3/medicines/{id}`                   | Retorna um medicamento específico por ID.                        | [Link](http://localhost:8080/api/v3/medicines/2)   |
-| POST   | `/api/v3/medicines`                        | Cadastra um novo medicamento.                                    | [Link](http://localhost:8080/api/v3/medicines)        |
-| DELETE | `/api/v3/medicines/{id}`                   | Remove um medicamento por ID.                                    | [Link](http://localhost:8080/api/v3/medicines/16)   |
-| PUT    | `/api/v3/medicines/{id}`                   | Atualiza um medicamento específico por ID                        | [Link](http://localhost:8080/api/v3/medicines/2)   |
+| GET    | `/api/v4/medicines`                        | Retorna todos os medicamentos.                                   | [Link](http://localhost:8080/api/v4/medicines)        |
+| GET    | `/api/v4/medicines/{id}`                   | Retorna um medicamento específico por ID.                        | [Link](http://localhost:8080/api/v4/medicines/2)   |
+| POST   | `/api/v4/medicines`                        | Cadastra um novo medicamento.                                    | [Link](http://localhost:8080/api/v4/medicines)        |
+| DELETE | `/api/v4/medicines/{id}`                   | Remove um medicamento por ID.                                    | [Link](http://localhost:8080/api/v4/medicines/16)   |
+| PUT    | `/api/v4/medicines/{id}`                   | Atualiza um medicamento específico por ID                        | [Link](http://localhost:8080/api/v4/medicines/2)   |
 
 ```bash
 {
@@ -225,15 +221,15 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## UnitMeasure ("/api/v3/unit-measures")
+## UnitMeasure ("/api/v4/unit-measures")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| GET    | `/api/v3/unit-measures`                    | Retorna todas as unidades de medida.                             | [Link](http://localhost:8080/api/v3/unit-measures)        |
-| GET    | `/api/v3/unit-measure/{id}`                | Retorna uma unidade de medida específica por ID.                 | [Link](http://localhost:8080/api/v3/unit-measure/2)    |
-| POST   | `/api/v3/unit-measures`                    | Cadastra uma nova unidade de medida.                             | [Link](http://localhost:8080/api/v3/unit-measures)        |
-| DELETE | `/api/v3/unit-measures/{id}`               | Remove uma unidade de medida por ID.                             | [Link](http://localhost:8080/api/v3/unit-measures/16)   |
-| PUT    | `/api/v3/unit-measure/{id}`                | Atualiza uma unidade de medida específica por ID                 | [Link](http://localhost:8080/api/v3/unit-measure/2)    |
+| GET    | `/api/v4/unit-measures`                    | Retorna todas as unidades de medida.                             | [Link](http://localhost:8080/api/v4/unit-measures)        |
+| GET    | `/api/v4/unit-measure/{id}`                | Retorna uma unidade de medida específica por ID.                 | [Link](http://localhost:8080/api/v4/unit-measure/2)    |
+| POST   | `/api/v4/unit-measures`                    | Cadastra uma nova unidade de medida.                             | [Link](http://localhost:8080/api/v4/unit-measures)        |
+| DELETE | `/api/v4/unit-measures/{id}`               | Remove uma unidade de medida por ID.                             | [Link](http://localhost:8080/api/v4/unit-measures/16)   |
+| PUT    | `/api/v4/unit-measure/{id}`                | Atualiza uma unidade de medida específica por ID                 | [Link](http://localhost:8080/api/v4/unit-measure/2)    |
 
 
 ```bash
@@ -242,15 +238,15 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## PharmaceuticalForm ("/api/v3/pharmaceutical-forms")
+## PharmaceuticalForm ("/api/v4/pharmaceutical-forms")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| GET    | `/api/v3/pharmaceutical-forms`             | Retorna todas as formas farmacêuticas.                           | [Link](http://localhost:8080/api/v3/pharmaceutical-forms)        |
-| GET    | `/api/v3/pharmaceutical-forms/{id}`        | Retorna uma forma farmacêutica específica por ID.                | [Link](http://localhost:8080/api/v3/pharmaceutical-forms/2)   |
-| POST   | `/api/v3/pharmaceutical-forms`             | Cadastra uma nova forma farmacêutica.                            | [Link](http://localhost:8080/api/v3/pharmaceutical-forms)        |
-| DELETE | `/api/v3/pharmaceutical-forms/{id}`        | Remove uma forma farmacêutica por ID.                            | [Link](http://localhost:8080/api/v3/pharmaceutical-forms/17)   |
-| PUT    | `/api/v3/pharmaceutical-forms/{id}`        | Atualiza uma forma farmacêutica específica por ID                | [Link](http://localhost:8080/api/v3/pharmaceutical-forms/2)   |
+| GET    | `/api/v4/pharmaceutical-forms`             | Retorna todas as formas farmacêuticas.                           | [Link](http://localhost:8080/api/v4/pharmaceutical-forms)        |
+| GET    | `/api/v4/pharmaceutical-forms/{id}`        | Retorna uma forma farmacêutica específica por ID.                | [Link](http://localhost:8080/api/v4/pharmaceutical-forms/2)   |
+| POST   | `/api/v4/pharmaceutical-forms`             | Cadastra uma nova forma farmacêutica.                            | [Link](http://localhost:8080/api/v4/pharmaceutical-forms)        |
+| DELETE | `/api/v4/pharmaceutical-forms/{id}`        | Remove uma forma farmacêutica por ID.                            | [Link](http://localhost:8080/api/v4/pharmaceutical-forms/17)   |
+| PUT    | `/api/v4/pharmaceutical-forms/{id}`        | Atualiza uma forma farmacêutica específica por ID                | [Link](http://localhost:8080/api/v4/pharmaceutical-forms/2)   |
 
 
 ```bash
@@ -259,15 +255,15 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## ActiveIngredient ("/api/v3/active-ingredients")
+## ActiveIngredient ("/api/v4/active-ingredients")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| GET    | `/api/v3/active-ingredients`               | Retorna todos os ingredientes ativos.                            | [Link](http://localhost:8080/api/v3/active-ingredients)        |
-| GET    | `/api/v3/active-ingredients/{id}`          | Retorna um ingrediente ativo específico por ID.                  | [Link](http://localhost:8080/api/v3/active-ingredients/2)   |
-| POST   | `/api/v3/active-ingredients`               | Cadastra um novo ingrediente ativo.                              | [Link](http://localhost:8080/api/v3/active-ingredients)        |
-| DELETE | `/api/v3/active-ingredients/{id}`          | Remove um ingrediente ativo por ID.                              | [Link](http://localhost:8080/api/v3/active-ingredients/16)   |
-| PUT    | `/api/v3/active-ingredients/{id}`          | Atualiza um ingrediente ativo específico por ID                  | [Link](http://localhost:8080/api/v3/active-ingredients/2)   |
+| GET    | `/api/v4/active-ingredients`               | Retorna todos os ingredientes ativos.                            | [Link](http://localhost:8080/api/v4/active-ingredients)        |
+| GET    | `/api/v4/active-ingredients/{id}`          | Retorna um ingrediente ativo específico por ID.                  | [Link](http://localhost:8080/api/v4/active-ingredients/2)   |
+| POST   | `/api/v4/active-ingredients`               | Cadastra um novo ingrediente ativo.                              | [Link](http://localhost:8080/api/v4/active-ingredients)        |
+| DELETE | `/api/v4/active-ingredients/{id}`          | Remove um ingrediente ativo por ID.                              | [Link](http://localhost:8080/api/v4/active-ingredients/16)   |
+| PUT    | `/api/v4/active-ingredients/{id}`          | Atualiza um ingrediente ativo específico por ID                  | [Link](http://localhost:8080/api/v4/active-ingredients/2)   |
 
 
 ```bash
@@ -276,15 +272,15 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## CategoryMedicine ("/api/v3/categories")
+## CategoryMedicine ("/api/v4/categories")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| GET    | `/api/v3/categories`                       | Retorna todas as categorias.                                     | [Link](http://localhost:8080/api/v3/categories)        |
-| GET    | `/api/v3/categories/{id}`                  | Retorna uma categoria específica por ID.                         | [Link](http://localhost:8080/api/v3/categories/2)   |
-| POST   | `/api/v3/categories`                       | Cadastra uma nova categoria.                                     | [Link](http://localhost:8080/api/v3/categories)        |
-| DELETE | `/api/v3/categories/{id}`                  | Remove uma categoria por ID.                                     | [Link](http://localhost:8080/api/v3/categories/16)   |
-| PUT    | `/api/v3/categories/{id}`                  | Atualiza uma categoria específica por ID                         | [Link](http://localhost:8080/api/v3/categories/2)   |
+| GET    | `/api/v4/categories`                       | Retorna todas as categorias.                                     | [Link](http://localhost:8080/api/v4/categories)        |
+| GET    | `/api/v4/categories/{id}`                  | Retorna uma categoria específica por ID.                         | [Link](http://localhost:8080/api/v4/categories/2)   |
+| POST   | `/api/v4/categories`                       | Cadastra uma nova categoria.                                     | [Link](http://localhost:8080/api/v4/categories)        |
+| DELETE | `/api/v4/categories/{id}`                  | Remove uma categoria por ID.                                     | [Link](http://localhost:8080/api/v4/categories/16)   |
+| PUT    | `/api/v4/categories/{id}`                  | Atualiza uma categoria específica por ID                         | [Link](http://localhost:8080/api/v4/categories/2)   |
 
 
 ```bash
@@ -293,11 +289,11 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 }
 ```
 
-## Batch ("/api/v3/batches/receipts")
+## Batch ("/api/v4/batches/receipts")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| POST   | `/api/v3/batches/receipts`                 | Cria um LOTE.                                                    | [Link](http://localhost:8080/api/v3/batches/receipts)        |
+| POST   | `/api/v4/batches/receipts`                 | Cria um LOTE.                                                    | [Link](http://localhost:8080/api/v4/batches/receipts)        |
 
 ```bash
 {
@@ -312,11 +308,11 @@ Caso queria uma outra opção de acesso as APIs, clique no link abaixo.
 
 ```
 
-## Batch ("/api/v3/stock/transfer")
+## Batch ("/api/v4/stock/transfer")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
-| POST   | `/api/v3/stock/transfer`                   | Transfere de um estoque para outro.                              | [Link](http://localhost:8080/api/v3/stock/transfer)        |
+| POST   | `/api/v4/stock/transfer`                   | Transfere de um estoque para outro.                              | [Link](http://localhost:8080/api/v4/stock/transfer)        |
 
 ```bash
 {
