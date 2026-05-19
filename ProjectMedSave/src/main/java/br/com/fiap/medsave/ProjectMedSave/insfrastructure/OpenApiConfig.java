@@ -26,7 +26,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("Example REST API")
-                        .version("1.0")
+                        .version("4.0")
                         .description("Operations REST for Project Challenge Oracle - MedSave")
                 );
     }
