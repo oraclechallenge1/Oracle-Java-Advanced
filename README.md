@@ -210,6 +210,7 @@ Os serviços de backend são acessados através da nossa API REST. Abaixo está 
 {
   "nameMedication": "test1",
   "statusMed": "ativo",
+  "anvisaCode": "ANVISA_0001",
   "activeIngredientIds": [
     1, 4
   ],
@@ -308,7 +309,7 @@ Os serviços de backend são acessados através da nossa API REST. Abaixo está 
 
 ```
 
-## Batch ("/api/v4/stock/transfer")
+## Stock ("/api/v4/stock/transfer")
 
 | Método | Endpoint                                   | Funcionalidade                                                   | URI                             |
 |--------|--------------------------------------------|------------------------------------------------------------------|---------------------------------|
