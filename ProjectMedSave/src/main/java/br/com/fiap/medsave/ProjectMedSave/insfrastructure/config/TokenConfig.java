@@ -13,7 +13,7 @@ import java.util.Optional;
 @Component
 public class TokenConfig {
 
-    private String secretKey = "secret";
+    private String secretKey = "medsave-chave-secreta-super-forte-para-jwt-com-bastante-caracteres-naqueles-pique-n-muda-nada-1234-@!!#$%*&#!--!@#";
 
     public String generateToken(UserSys userSys) {
 
@@ -35,7 +35,7 @@ public class TokenConfig {
                     .build().verify(token);
 
             return Optional.of(JWTUserData.builder()
-                    .userId(decode.getClaim("userId").asLong())
+                    .userId(Long.parseLong(decode.getClaim("userId").asString()))
                     .email(decode.getSubject())
                     .build());
         } catch (JWTVerificationException exception) {
