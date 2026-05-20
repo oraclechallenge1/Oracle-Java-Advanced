@@ -35,7 +35,7 @@ public class TokenConfig {
                     .build().verify(token);
 
             return Optional.of(JWTUserData.builder()
-                    .userId(Long.parseLong(decode.getClaim("userId").asString()))
+                    .userId(decode.getClaim("userId").asLong())
                     .email(decode.getSubject())
                     .build());
         } catch (JWTVerificationException exception) {
