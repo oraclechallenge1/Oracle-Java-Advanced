@@ -5,6 +5,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -13,7 +14,8 @@ import java.util.Optional;
 @Component
 public class TokenConfig {
 
-    private String secretKey = "medsave-chave-secreta-super-forte-para-jwt-com-bastante-caracteres-naqueles-pique-n-muda-nada-1234-@!!#$%*&#!--!@#";
+   @Value("${api.security.token.secret}")
+    private String secretKey;
 
     public String generateToken(UserSys userSys) {
 
