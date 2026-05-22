@@ -22,6 +22,8 @@ public class TokenConfig {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
         return JWT.create()
+                .withIssuer("MedSaveApi")
+                .withAudience("MedSaveClient")
                 .withClaim("userId", userSys.getId())
                 .withSubject(userSys.getEmail())
                 .withExpiresAt(Instant.now().plusSeconds(86400)) // valido por 24h
